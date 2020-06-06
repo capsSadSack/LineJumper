@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8939630686433482441}
   - component: {fileID: 8939630686433482440}
-  - component: {fileID: 9005806364315081860}
+  - component: {fileID: 556637657075440309}
   - component: {fileID: 8939630686433482447}
   - component: {fileID: 2027655007329001597}
   m_Layer: 0
@@ -52,7 +52,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!50 &9005806364315081860
+--- !u!50 &556637657075440309
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939630686433482446}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -68,7 +68,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3d2c7e7829875c34b963c4f3a592feda, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -256,7 +256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: af24335bf88c7fc4a92a62c01089e038, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -2,9 +2,10 @@
 
 public class EnemyController : MonoBehaviour
 {
+    public bool IsAggressive { get; private set; } = true;
+
     private bool isOnLeftBorder = false;
     private bool isJumping = false;
-    private bool isAggressive = true;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -20,24 +21,26 @@ public class EnemyController : MonoBehaviour
     {
         if (!isJumping)
         {
-            Vector2 direction = GetRandomDirection();
-            float velocityModule = GetRandomVelocity();
-
-            rb.velocity = direction * velocityModule;
-
-            isJumping = true;
-            anim.SetBool("isJumping", true);
-
-            isAggressive = GetAggression();
-            anim.SetBool("isAggressive", isAggressive);
-
-            if (isAggressive)
+            if (UnityEngine.Random.value > 0.66)
             {
-                Debug.Log("AGGRESSIVE");
-            }
-            else
-            {
-                Debug.Log("NOT AGGRESSIVE");
+                Vector2 direction = GetRandomDirection();
+                float velocityModule = GetRandomVelocity();
+
+                rb.velocity = direction * velocityModule;
+                rb.angularVelocity = 360;
+
+
+                IsAggressive = GetAggression();
+                anim.SetBool("isAggressive", IsAggressive);
+
+                if (IsAggressive)
+                {
+                    Debug.Log("AGGRESSIVE");
+                }
+                else
+                {
+                    Debug.Log("NOT AGGRESSIVE");
+                }
             }
         }
     }
@@ -59,7 +62,7 @@ public class EnemyController : MonoBehaviour
 
     private float GetRandomVelocity()
     {
-        return UnityEngine.Random.Range(5, 10);
+        return UnityEngine.Random.Range(7, 13);
     }
 
     private bool GetAggression()
@@ -74,7 +77,7 @@ public class EnemyController : MonoBehaviour
         {
             isOnLeftBorder = !isOnLeftBorder;
 
-            Vector2 dpos = new Vector2(0.2f, 0);
+            Vector2 dpos = new Vector2(0.1f, 0);
             if (isOnLeftBorder)
                 dpos *= -1;
 
@@ -82,11 +85,9 @@ public class EnemyController : MonoBehaviour
 
             rb.velocity = new Vector2(0, 0);
             rb.angularVelocity = 0;
-            isJumping = false;
-            anim.SetBool("isJumping", false);
 
-            isAggressive = true;
-            anim.SetBool("isAggressive", isAggressive);
+            IsAggressive = true;
+            anim.SetBool("isAggressive", IsAggressive);
         }
     }
 }

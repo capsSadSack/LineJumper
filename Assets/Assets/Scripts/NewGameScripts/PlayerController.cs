@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
@@ -12,13 +10,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 direction = (mouseWorldPosition - transform.position);
 
-            rb.velocity = new Vector2(direction.x, direction.y);
+            rb.velocity = 10 * new Vector2(direction.x, direction.y).normalized;
 
             OnPlayerMove.Invoke();
         }
@@ -38,7 +36,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy!");
-            OnGoodEnemyCollision.Invoke();
+
+            var enemyController = collision.gameObject.GetComponent<EnemyController>();
+
+            if (enemyController.IsAggressive)
+            {
+                OnAggressiveEnemyCollision.Invoke();
+            }
+            else
+            {
+                OnGoodEnemyCollision.Invoke();
+            }
         }
 
         if (collision.gameObject.CompareTag("Border"))
