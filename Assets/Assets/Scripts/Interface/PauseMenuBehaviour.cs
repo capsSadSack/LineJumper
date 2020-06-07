@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuBehaviour : MonoBehaviour
@@ -11,7 +9,7 @@ public class PauseMenuBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameEndMenuBehaviour.GameEnded)
         {
             GameIsPaused = !GameIsPaused;
 
@@ -52,12 +50,14 @@ public class PauseMenuBehaviour : MonoBehaviour
 
     public void Restart()
     {
+        Time.timeScale = 1f;
         var currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
     }
 
