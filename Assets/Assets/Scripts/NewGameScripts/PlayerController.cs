@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnAggressiveEnemyCollision;
 
     private Rigidbody2D rb;
+    private bool isJumping = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!isJumping && Input.GetMouseButtonDown(0))
         {
             Vector3 mouseScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
@@ -26,18 +27,19 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = (mouseWorldPosition - transform.position);
 
             rb.velocity = 10 * new Vector2(direction.x, direction.y).normalized;
+            isJumping = true;
 
             OnPlayerMove.Invoke();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collider.CompareTag("Enemy"))
         {
             Debug.Log("Enemy!");
 
-            var enemyController = collision.gameObject.GetComponent<EnemyController>();
+            var enemyController = collider.gameObject.GetComponent<EnemyController>();
 
             if (enemyController.IsAggressive)
             {
@@ -45,14 +47,18 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                GameObject.Destroy(collider.gameObject);
                 OnGoodEnemyCollision.Invoke();
             }
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Border"))
         {
-            Debug.Log("Border!");
             rb.velocity = new Vector2(0, 0);
+            isJumping = false;
         }
     }
 }

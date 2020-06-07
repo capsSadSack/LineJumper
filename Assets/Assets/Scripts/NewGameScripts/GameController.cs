@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -14,8 +9,8 @@ public class GameController : MonoBehaviour
     public float gameActionPeriod_Sec;
     public int initialEnemiesNumber;
 
-    private DateTime lastSpawnTime;
-    private DateTime lastGameActionTime;
+    private SimpleTimer spawningTimer;
+    private SimpleTimer gameActionTimer;
     private ScoreController scoreController;
 
 
@@ -23,24 +18,15 @@ public class GameController : MonoBehaviour
     {
         scoreController = GetComponent<ScoreController>();
 
+        spawningTimer = new SimpleTimer(spawnPeriod_Sec, SpawnNewEnemy);
+        gameActionTimer = new SimpleTimer(gameActionPeriod_Sec, OnGameAction.Invoke);
         CreateEnemies(initialEnemiesNumber);
-        lastSpawnTime = DateTime.UtcNow;
-
     }
 
     private void Update()
     {
-        if ((DateTime.UtcNow - lastSpawnTime).TotalSeconds >= spawnPeriod_Sec)
-        {
-            SpawnNewEnemy();
-            lastSpawnTime = DateTime.UtcNow;
-        }
-
-        if ((DateTime.UtcNow - lastGameActionTime).TotalSeconds >= gameActionPeriod_Sec)
-        {
-            lastGameActionTime = DateTime.UtcNow;
-            OnGameAction.Invoke();
-        }
+        spawningTimer.UpdateTimer();
+        gameActionTimer.UpdateTimer();
     }
 
     private void CreateEnemies(int enemiesNumber)

@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
 
     private float GetRandomVelocity()
     {
-        return UnityEngine.Random.Range(7, 13);
+        return UnityEngine.Random.Range(3, 8);
     }
 
     private bool GetAggression()
@@ -71,17 +71,11 @@ public class EnemyController : MonoBehaviour
         return value > 0.5f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Border"))
+        if (collider.CompareTag("Border"))
         {
-            isOnLeftBorder = !isOnLeftBorder;
-
-            Vector2 dpos = new Vector2(0.1f, 0);
-            if (isOnLeftBorder)
-                dpos *= -1;
-
-            rb.position = rb.position + dpos;
+            isOnLeftBorder = collider.gameObject.transform.position.x < 0;
 
             rb.velocity = new Vector2(0, 0);
             rb.angularVelocity = 0;
