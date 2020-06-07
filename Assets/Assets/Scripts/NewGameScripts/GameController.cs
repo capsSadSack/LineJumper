@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public float gameActionPeriod_Sec;
     public int initialEnemiesNumber;
 
+    public GameObject enemiesTransformParent;
+
     private SimpleTimer spawningTimer;
     private SimpleTimer gameActionTimer;
     private ScoreController scoreController;
@@ -31,12 +33,15 @@ public class GameController : MonoBehaviour
 
     private void CreateEnemies(int enemiesNumber)
     {
+        float dy = 150;
+        float x0 = 460;
+        float y0 = 0;
+
         for (int i = 0; i < enemiesNumber; i++)
         {
             var enemy = CreateEnemy();
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            rb.position = new Vector2(0, 0);
-            rb.velocity = new Vector2(1, 1);
+            rb.gameObject.transform.localPosition = new Vector2(x0, y0 + Mathf.Pow(-1, i) * ((i + 1) / 2) * dy );
         }
     }
 
@@ -46,7 +51,7 @@ public class GameController : MonoBehaviour
         GetPosAndVel(out Vector2 position, out Vector2 velocity);
 
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-        rb.position = position;
+        rb.gameObject.transform.localPosition = position;
         rb.velocity = velocity;
     }
 
@@ -54,6 +59,7 @@ public class GameController : MonoBehaviour
     {
         var source = Resources.Load("Prefabs/Enemy");
         GameObject objSource = (GameObject)Instantiate(source);
+        objSource.transform.parent = enemiesTransformParent.transform;
 
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
         OnGameAction.AddListener(() => { enemyController.Jump(); });
@@ -63,10 +69,20 @@ public class GameController : MonoBehaviour
 
     private void GetPosAndVel(out Vector2 position, out Vector2 velocity)
     {
+        float x0 = 0;
+        float y0 = 1000;
+        Vector2 vel = new Vector2(1, -1.5f);
+
         bool onTop = UnityEngine.Random.value > 0.5;
 
-        position = (onTop) ? new Vector2(0, 4) : new Vector2(0, -4);
-        velocity = (onTop) ? new Vector2(1, -1) : new Vector2(1, 1);
+        if (!onTop)
+        {
+            y0 *= -1;
+            vel *= -1;
+        }
+
+        position = new Vector2(x0, y0);
+        velocity = vel;
     }
 
     public void Victory()
