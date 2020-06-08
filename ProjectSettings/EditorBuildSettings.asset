@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/RecordsScene.unity
     guid: 722233a4699a34847be3d9a5755c22e4
   - enabled: 1
+    path: Assets/Scenes/AchievementsScene.unity
+    guid: b8665461acc7c164aba908d7519b5295
+  - enabled: 1
     path: Assets/Scenes/DifficultyScene.unity
     guid: c560c1a78b86f9a4ea46d4a4fc354b5c
   - enabled: 1
