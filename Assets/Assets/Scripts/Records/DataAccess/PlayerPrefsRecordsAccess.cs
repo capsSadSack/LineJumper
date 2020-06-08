@@ -24,20 +24,20 @@ public class PlayerPrefsRecordsAccess : IRecordsAccess
             }
         }
 
-        return output.OrderBy(x => x.Score);
+        return output.OrderByDescending(x => x.Score);
     }
 
     public void InsertRecord(RecordInfo recordInfo)
     {
         var currentRecords = GetRecords(recordInfo.Difficulty).ToList();
         currentRecords.Add(recordInfo);
-        var newRecords = currentRecords.OrderBy(x => x.Score);
+        var newRecords = currentRecords.OrderByDescending(x => x.Score);
 
         for (int i = 0; i < 10 || i < newRecords.Count(); i++)
         {
             int place = i + 1;
             string key = GetRecordKey(recordInfo.Difficulty, place);
-            PlayerPrefs.SetString(key, recordInfo.ToRecordString());
+            PlayerPrefs.SetString(key, newRecords.ElementAt(i).ToRecordString());       
         }
 
         PlayerPrefs.Save();

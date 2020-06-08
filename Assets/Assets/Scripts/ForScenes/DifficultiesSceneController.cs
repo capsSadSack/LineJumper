@@ -21,4 +21,12 @@ public class DifficultiesSceneController : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenuScene");
+        }
+    }
 }

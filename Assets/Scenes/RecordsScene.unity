@@ -216,6 +216,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuButton_World
       objectReference: {fileID: 0}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946104668}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessWorldButtonClick
+      objectReference: {fileID: 0}
     - target: {fileID: 1021595748793048303, guid: c550333deea05474c89b433d629d8636,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,6 +633,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuButton_Hard
       objectReference: {fileID: 0}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946104668}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessHardButtonClick
+      objectReference: {fileID: 0}
     - target: {fileID: 1021595748793048303, guid: c550333deea05474c89b433d629d8636,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -767,6 +787,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton_Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946104668}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessMediumButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 1021595748793048303, guid: c550333deea05474c89b433d629d8636,
         type: 3}
@@ -982,6 +1012,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton_Easy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946104668}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessEasyButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 1021595748793048303, guid: c550333deea05474c89b433d629d8636,
         type: 3}
@@ -1251,6 +1291,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton_Local
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946104668}
+    - target: {fileID: 1021595748793048302, guid: c550333deea05474c89b433d629d8636,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProcessLocalButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 1021595748793048303, guid: c550333deea05474c89b433d629d8636,
         type: 3}

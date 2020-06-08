@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1861397959}
-        m_MethodName: SowGameEndMenu
+        m_MethodName: ShowGameEndMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2445,7 +2445,7 @@ MonoBehaviour:
   scoreController: {fileID: 1455096172}
   endGameMessageText: {fileID: 169720969}
   enterNameText: {fileID: 640023814}
-  nameTextBox: {fileID: 1694178413}
+  nameTextBox: {fileID: 1694178415}
 --- !u!1 &1888964966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +2945,16 @@ PrefabInstance:
       propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1861397959}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnGoodEnemyCollision.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncrementScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowGameEndMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 375581921080090068, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: m_LocalPosition.x

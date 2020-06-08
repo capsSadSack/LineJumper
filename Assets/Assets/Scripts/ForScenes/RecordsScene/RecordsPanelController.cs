@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class RecordsPanelController : MonoBehaviour
 {
-    private PlayerPrefsRecordsAccess recordsAccess;
-
+    private PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
     private List<GameObject> recordItems = new List<GameObject>();
 
 
     // Start is called before the first frame update
     private void Start()
     {
-        recordsAccess = new PlayerPrefsRecordsAccess();
-        ShowRecords(Difficulty.Easy);
+        ShowRecords(Difficulty.Hard);
     }
 
     public void ShowRecords(Difficulty difficulty)
