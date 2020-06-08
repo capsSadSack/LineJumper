@@ -33,7 +33,7 @@ public class PlayerPrefsRecordsAccess : IRecordsAccess
         currentRecords.Add(recordInfo);
         var newRecords = currentRecords.OrderByDescending(x => x.Score);
 
-        for (int i = 0; i < 10 || i < newRecords.Count(); i++)
+        for (int i = 0; i < 10 && i < newRecords.Count(); i++)
         {
             int place = i + 1;
             string key = GetRecordKey(recordInfo.Difficulty, place);

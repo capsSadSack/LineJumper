@@ -69,9 +69,9 @@ public class RecordsPanelController : MonoBehaviour
         GameObject objSource = (GameObject)Instantiate(source);
         objSource.transform.SetParent(gameObject.transform);
 
-        Text placeText = objSource.transform.GetChild(1).GetComponent<Text>();
-        Text nameText = objSource.transform.GetChild(2).GetComponent<Text>();
-        Text scoreText = objSource.transform.GetChild(3).GetComponent<Text>();
+        Text placeText = objSource.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>();
+        Text nameText = objSource.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>();
+        Text scoreText = objSource.transform.GetChild(1).transform.GetChild(2).GetComponent<Text>();
 
         placeText.text = $"{ place }";
         nameText.text = recordInfo.PlayerName;
