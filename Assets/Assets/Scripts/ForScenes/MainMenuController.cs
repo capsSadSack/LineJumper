@@ -6,7 +6,7 @@ public class MainMenuController : MonoBehaviour
 {
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("DifficultyScene");
     }
 
     public void LoadHowToPlayScene()

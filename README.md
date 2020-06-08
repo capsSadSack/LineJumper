@@ -19,3 +19,7 @@ TODO:
 	- Canvas с генерирующимся в коде объектом достижения
 5) game center
 6) реклама
+
+Bugs:
+- enemies can change direction in jump when OnGameAction event occurs.
+- enemies can cange aggression state in jump!!!

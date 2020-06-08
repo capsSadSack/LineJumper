@@ -1,13 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Assets.Scripts.Difficulties;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
     public UnityEvent OnGameAction;
-
-    public float spawnPeriod_Sec;
-    public float gameActionPeriod_Sec;
-    public int initialEnemiesNumber;
 
     public GameObject enemiesTransformParent;
 
@@ -15,14 +12,23 @@ public class GameController : MonoBehaviour
     private SimpleTimer gameActionTimer;
     private ScoreController scoreController;
 
+    private Difficulty currentDifficulty;
+
 
     private void Start()
     {
+        PlayerPrefsDifficultyAccess difficultyAccess = new PlayerPrefsDifficultyAccess();
+        currentDifficulty = difficultyAccess.GetDifficulty();
+
+        DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
+
+        spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, SpawnNewEnemy);
+        gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
+        
+        CreateEnemies(difficultySettings.InitialEnemiesCount);
+
         scoreController = GetComponent<ScoreController>();
 
-        spawningTimer = new SimpleTimer(spawnPeriod_Sec, SpawnNewEnemy);
-        gameActionTimer = new SimpleTimer(gameActionPeriod_Sec, OnGameAction.Invoke);
-        CreateEnemies(initialEnemiesNumber);
     }
 
     private void Update()
@@ -34,7 +40,7 @@ public class GameController : MonoBehaviour
     private void CreateEnemies(int enemiesNumber)
     {
         float dy = 150;
-        float x0 = 460;
+        float x0 = 450;
         float y0 = 0;
 
         for (int i = 0; i < enemiesNumber; i++)
@@ -42,6 +48,7 @@ public class GameController : MonoBehaviour
             var enemy = CreateEnemy();
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             rb.gameObject.transform.localPosition = new Vector2(x0, y0 + Mathf.Pow(-1, i) * ((i + 1) / 2) * dy );
+            rb.velocity = new Vector2(1, 0);
         }
     }
 

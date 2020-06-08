@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
     public bool IsAggressive { get; private set; } = true;
 
     private bool isOnLeftBorder = false;
-    private bool isJumping = false;
+    private bool isJumping = true;
 
     private Rigidbody2D rb;
     private Animator anim;
