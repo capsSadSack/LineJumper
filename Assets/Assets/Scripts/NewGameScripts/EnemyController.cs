@@ -80,6 +80,7 @@ public class EnemyController : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             rb.angularVelocity = 0;
 
+            isJumping = false;
             IsAggressive = true;
             anim.SetBool("isAggressive", IsAggressive);
         }

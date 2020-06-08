@@ -16,7 +16,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadRecordsScene()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene("RecordsScene");
     }
 
     public void LoadAchievementsScene()

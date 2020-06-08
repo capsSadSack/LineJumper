@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     private void CreateEnemies(int enemiesNumber)
     {
         float dy = 150;
-        float x0 = 450;
+        float x0 = 400;
         float y0 = 0;
 
         for (int i = 0; i < enemiesNumber; i++)
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
     {
         float x0 = 0;
         float y0 = 1000;
-        Vector2 vel = new Vector2(1, -1.5f);
+        Vector2 vel = new Vector2(1 + UnityEngine.Random.value * 0.5f, -1 + UnityEngine.Random.value * 0.5f);
 
         bool onTop = UnityEngine.Random.value > 0.5;
 

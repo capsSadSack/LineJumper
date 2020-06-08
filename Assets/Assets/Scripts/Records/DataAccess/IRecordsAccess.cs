@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-namespace Assets.Assets.Scripts.Records
+public interface IRecordsAccess
 {
-    public interface IRecordsAccess
-    {
-        IOrderedEnumerable<RecordInfo> GetRecords(Difficulty difficulty);
+    IOrderedEnumerable<RecordInfo> GetRecords(Difficulty difficulty);
 
-        void InsertRecord(RecordInfo recordInfo);
+    void InsertRecord(RecordInfo recordInfo);
 
-        bool IsRecord(RecordInfo recordInfo);
-    }
+    bool IsRecord(RecordInfo recordInfo);
 }
