@@ -1,7 +1,7 @@
 # LineJumper
 LineJumper game
 
-##TODO (first priority):
+## TODO (first priority):
 1) Игра:
 	- сделать так, чтобы враги не стремились покидать игровое поле;
 2) коррекция сложности
@@ -19,15 +19,15 @@ LineJumper game
 	- подключить достижения.
 6) реклама
 
-##TODO (second priority):
+## TODO (second priority):
 1) RecordsScene: 
 	- подкрашивать выбранные элементы (Local/World, Easy/Medium/Hard)
 
-##Bugs:
+## Bugs:
 - enemies can change direction in jump when OnGameAction event occurs.
 - enemies can cange aggression state in jump!!!
 
-##UI Bugs:
+## UI Bugs:
 - MainMenuScene (и др., где используется MenuButton): 
      действие OnMouseClick() происходит раньше окончания анимации нажатой кнопки;
 	 проблема наблюдается не только у MenuButton, но и у всех анимированных кнопок;
