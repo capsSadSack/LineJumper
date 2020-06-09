@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class AchievementMessageShower : MonoBehaviour
 {
-    public GameObject achievementCanvas;
+    public GameObject achievementsCanvas;
 
     public Sprite runawayIcon;
+    public Sprite doubleKillIcon;
 
 
     private IAchievementsAccess achievementsAccess 
@@ -22,13 +23,13 @@ public class AchievementMessageShower : MonoBehaviour
 
     public void ShowAchievementMessage(AchievementUnlockedArgs args)
     {
-        this.achievementCanvas.SetActive(true);
+        achievementsCanvas.gameObject.SetActive(true);
         this.gameObject.SetActive(true);
 
         // TODO: [CG, 2020.05.31] Заглушка на показ достижений всегда
-        if (!achievementsAccess.GetAchievementsStates()[args.Achievement])
+        if (true)//!achievementsAccess.GetAchievementsStates()[args.Achievement])
         {
-            GameObject message = CreateAchievementMessage(args.Achievement);
+            GameObject message = CreateAchievement(args.Achievement, true);
 
             message.transform.SetParent(this.transform);
 
@@ -52,21 +53,18 @@ public class AchievementMessageShower : MonoBehaviour
         }
     }
 
-    private GameObject CreateAchievementMessage(Achievement achievement)
+
+    private GameObject CreateAchievement(Achievement achievement, bool isUnlocked)
     {
         // NOTE: Создание экземпляра prefab'а из кода.
         var source = Resources.Load("Prefabs/AchievementUnlocked");
         GameObject objSource = (GameObject)Instantiate(source);
+        objSource.name = EnumsProcessor.GetDescription(achievement);
 
-        foreach (var image in objSource.GetComponentsInChildren<Image>())
-        {
-            if (image.name == "UnlockedMask")
-            {
-                image.gameObject.SetActive(false);
-            }
-        }
+        // NOTE: Настройка полупрозрачной маски закрытого достижения (есть/нет)
+        objSource.transform.GetChild(4).gameObject.SetActive(!isUnlocked);
 
-        UpdateAchievementMessage(objSource, achievement);
+        CustomizeAchievementMessage(objSource, achievement);
 
         return objSource;
     }
@@ -77,13 +75,15 @@ public class AchievementMessageShower : MonoBehaviour
         {
             case Achievement.Runaway:
                 return runawayIcon;
+            case Achievement.DoubleKill:
+                return doubleKillIcon;
             default:
                 throw new ArgumentException("AchievementMessageShower.GetSprite: " +
                     "нет спрайта для выбранного Achievement.");
         }
     }
 
-    private void UpdateAchievementMessage(GameObject message, Achievement achievement)
+    private void CustomizeAchievementMessage(GameObject message, Achievement achievement)
     {
         string description = achievementsData.GetDescription(achievement);
         string name = achievementsData.GetName(achievement);
@@ -138,7 +138,6 @@ public class AchievementMessageShower : MonoBehaviour
 
     private void HidePanel()
     {
-        this.achievementCanvas.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
@@ -154,6 +153,11 @@ public class AchievementMessageShower : MonoBehaviour
                 messages.RemoveAt(i);
                 i--;
             }
+        }
+
+        if (messages.Count == 0)
+        {
+            achievementsCanvas.gameObject.SetActive(false);
         }
     }
 

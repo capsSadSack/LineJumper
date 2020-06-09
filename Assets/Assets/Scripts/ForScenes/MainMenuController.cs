@@ -21,7 +21,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadAchievementsScene()
     {
-        SceneManager.LoadScene("AchievementsSceneController");
+        SceneManager.LoadScene("AchievementsScene");
     }
 
     public void Exit()

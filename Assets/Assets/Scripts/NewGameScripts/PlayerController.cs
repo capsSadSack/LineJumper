@@ -6,17 +6,19 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnPlayerMove;
     public UnityEvent OnGoodEnemyCollision;
     public UnityEvent OnAggressiveEnemyCollision;
+    public AchievementUnlockedEvent OnAchievementUnlocked;
 
     private Rigidbody2D rb;
     private bool isJumping = false;
+    private int enemiesDestroyedInSingleJump = 0;
 
-    // Start is called before the first frame update
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+
     private void Update()
     {
         if (!isJumping && Input.GetMouseButtonDown(0))
@@ -37,8 +39,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy!");
-
             var enemyController = collider.gameObject.GetComponent<EnemyController>();
 
             if (enemyController.IsAggressive)
@@ -47,6 +47,19 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                if (isJumping)
+                {
+                    enemiesDestroyedInSingleJump++;
+                    if (enemiesDestroyedInSingleJump >= 2)
+                    {
+                        UnlockDoubleKillAchievement();
+                    }
+                }
+                else
+                {
+                    enemiesDestroyedInSingleJump = 0;
+                }
+
                 GameObject.Destroy(collider.gameObject);
                 OnGoodEnemyCollision.Invoke();
             }
@@ -57,8 +70,20 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Border"))
         {
+            enemiesDestroyedInSingleJump = 0;
+
             rb.velocity = new Vector2(0, 0);
             isJumping = false;
         }
+    }
+
+    private void UnlockDoubleKillAchievement()
+    {
+        AchievementUnlockedArgs args = new AchievementUnlockedArgs()
+        {
+            Achievement = Achievement.DoubleKill
+        };
+
+        OnAchievementUnlocked.Invoke(args);
     }
 }
