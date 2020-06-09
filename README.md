@@ -33,14 +33,14 @@ LineJumper game
 	- подключить аналог GameCenter для Android,
 	- научиться получать глобальный рейтинг среди игроков, рейтинг 'World';
 	- подключить достижения.
-4) реклама
+4) "Навести красоту"
 
 ## TODO (second priority):
 1) RecordsScene: 
 	- подкрашивать выбранные элементы (Local/World, Easy/Medium/Hard)
 
 ## Bugs:
-- 
+- Когда показывается достижение нельзя нажимать на кнопки в EndGameMenu
 
 ## UI Bugs:
 - MainMenuScene (и др., где используется MenuButton): 

@@ -298,6 +298,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169720967}
   m_CullTransparentMesh: 0
+--- !u!1 &174726893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174726895}
+  - component: {fileID: 174726894}
+  m_Layer: 0
+  m_Name: AdManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &174726894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174726893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490a2d04771c0674eb6f3e0b721c95b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &174726895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174726893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190006325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1419,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1861397959}
         m_MethodName: ShowGameEndMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 174726894}
+        m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2666,6 +2720,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfee448f3928b2c428c0fc6162132c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnGameEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 174726894}
+        m_MethodName: LockAd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAchievementUnlocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1812254480}
+        m_MethodName: UnlockAchievement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1812254479}
+        m_MethodName: ShowAchievementMessage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   gameEndMenuUI: {fileID: 594189354}
   gameInterface: {fileID: 1406779180}
   scoreValue: {fileID: 416099254}
@@ -3164,6 +3257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
       propertyPath: OnPlayerMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
@@ -3235,6 +3333,31 @@ PrefabInstance:
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: OnAchievementUnlocked.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 174726894}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowAd
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 375581921080090068, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,

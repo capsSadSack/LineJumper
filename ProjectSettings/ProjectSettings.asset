@@ -723,10 +723,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: ecdfc2e2-78f4-4d71-9886-af2315b10f2e
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Line Jumper
+  organizationId: spareparachute
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

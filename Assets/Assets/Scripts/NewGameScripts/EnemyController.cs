@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Assets.Scripts.Difficulties;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,11 +11,22 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    private float maxVelocity;
+    private float minVelocity;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        PlayerPrefsDifficultyAccess difficultyAccess = new PlayerPrefsDifficultyAccess();
+        var difficulty = difficultyAccess.GetDifficulty();
+
+        DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[difficulty];
+
+        maxVelocity = difficultySettings.MaxVelocity;
+        minVelocity = difficultySettings.MinVelocity;
     }
 
     public void Jump()
@@ -100,7 +112,7 @@ public class EnemyController : MonoBehaviour
 
     private float GetRandomVelocity()
     {
-        return UnityEngine.Random.Range(3, 8);
+        return UnityEngine.Random.Range(minVelocity, maxVelocity);
     }
 
     private bool GetAggression()

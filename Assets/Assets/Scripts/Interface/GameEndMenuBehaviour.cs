@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class GameEndMenuBehaviour : MonoBehaviour
 {
     public static bool GameEnded = false;
+
+    public GameEndEvent OnGameEnd;
+    public AchievementUnlockedEvent OnAchievementUnlocked;
+
     public GameObject gameEndMenuUI;
     public GameObject gameInterface;
 
@@ -20,6 +24,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
     private RecordInfo recordInfo;
     private PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
     private PlayerPrefsDifficultyAccess difficultyAccess = new PlayerPrefsDifficultyAccess();
+
 
     public void ShowGameEndMenu()
     {
@@ -39,9 +44,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
             Score = score
         };
 
-        // TODO: Заглушка. Учитывать рекорды
         isRecord = recordsAccess.IsRecord(recordInfo);
-
         endGameMessageText.text = (isRecord) ? "Great Result!" : "Game over";
 
         enterNameText.gameObject.SetActive(isRecord);
@@ -52,6 +55,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
     public void Restart()
     {
         SaveRecord();
+        NotifyGameEnd();
 
         Time.timeScale = 1f;
         var currentScene = SceneManager.GetActiveScene().name;
@@ -61,9 +65,23 @@ public class GameEndMenuBehaviour : MonoBehaviour
     public void ToMainMenu()
     {
         SaveRecord();
+        NotifyGameEnd();
 
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    private void NotifyGameEnd()
+    {
+        GameEndArgs args = new GameEndArgs()
+        {
+            Difficulty = difficultyAccess.GetDifficulty(),
+            Player = nameTextBox.text,
+            Score = scoreController.Score
+        };
+
+        CheckGameResultForAchievements(args);
+        OnGameEnd.Invoke(args);
     }
 
     private void SaveRecord()
@@ -72,5 +90,19 @@ public class GameEndMenuBehaviour : MonoBehaviour
         recordInfo.PlayerName = name;
 
         recordsAccess.InsertRecord(recordInfo);
+    }
+
+    private void CheckGameResultForAchievements(GameEndArgs args)
+    {
+        // TODO: [CG, 2020.06.09] Закомментировал вызов достижения
+        //if (args.Score > 10)
+        //{
+        //    AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+        //    {
+        //        Achievement = Achievement.Runaway
+        //    };
+
+        //    OnAchievementUnlocked.Invoke(achArgs);
+        //}
     }
 }

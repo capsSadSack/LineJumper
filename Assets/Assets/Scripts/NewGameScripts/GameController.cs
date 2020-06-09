@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour
 
     private SimpleTimer spawningTimer;
     private SimpleTimer gameActionTimer;
-    private ScoreController scoreController;
 
     private Difficulty currentDifficulty;
 
@@ -26,9 +25,6 @@ public class GameController : MonoBehaviour
         gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
         
         CreateEnemies(difficultySettings.InitialEnemiesCount);
-
-        scoreController = GetComponent<ScoreController>();
-
     }
 
     private void Update()
@@ -90,12 +86,5 @@ public class GameController : MonoBehaviour
 
         position = new Vector2(x0, y0);
         velocity = vel;
-    }
-
-    public void Victory()
-    {
-        int score = scoreController.Score;
-        // SaveScore
-        // Check Achievements
     }
 }
