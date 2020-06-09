@@ -131,7 +131,7 @@ public class AchievementsSceneController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("HomeScene");
+            SceneManager.LoadScene("MainMenuScene");
         }
     }
 }

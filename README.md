@@ -17,29 +17,29 @@ LineJumper game
 - AchievementUnlocked
 
 ## TODO (first priority):
-1) Игра:
-	- сделать так, чтобы враги не стремились покидать игровое поле;
-2) коррекция сложности
-	- настроить числовые параметры DifficultySettings для всех Difficulty
-4) достижения
+1) коррекция сложности
+	- настроить числовые параметры DifficultySettings для всех Difficulty;
+	- добавить в настройки сложности скоростной интервал врагов?
+2) достижения
 	- придумать достижения
 		- собрать (уничтожить) 100/500/1000 врагов (потребуется вести подсчет и сохранять);
 		- собрать (уничтожить) 10/25/50/100 врагов за игру (проверка вызывается при окончании игры);
 		- уничтожить 2 врага за один прыжок (потребуется добавить локальный счетчик);
-	- иконки достижений
-5) Game Center (Google Play Games plugin for Unity)
+	- иконки достижений,
+	- подключение достижений (подписка на события и т.п.),
+	- всплывающее сообщение о получении достижения
+3) Game Center (Google Play Games plugin for Unity)
 	- подключить аналог GameCenter для Android,
 	- научиться получать глобальный рейтинг среди игроков, рейтинг 'World';
 	- подключить достижения.
-6) реклама
+4) реклама
 
 ## TODO (second priority):
 1) RecordsScene: 
 	- подкрашивать выбранные элементы (Local/World, Easy/Medium/Hard)
 
 ## Bugs:
-- enemies can change direction in jump when OnGameAction event occurs.
-- enemies can cange aggression state in jump!!!
+- 
 
 ## UI Bugs:
 - MainMenuScene (и др., где используется MenuButton): 

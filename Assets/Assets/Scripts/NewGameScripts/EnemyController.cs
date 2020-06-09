@@ -23,12 +23,13 @@ public class EnemyController : MonoBehaviour
         {
             if (UnityEngine.Random.value > 0.66)
             {
-                Vector2 direction = GetRandomDirection();
+                Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+                Vector2 direction = GetRandomDirection(coordinates);
                 float velocityModule = GetRandomVelocity();
 
                 rb.velocity = direction * velocityModule;
                 rb.angularVelocity = 360;
-
+                isJumping = true;
 
                 IsAggressive = GetAggression();
                 anim.SetBool("isAggressive", IsAggressive);
@@ -45,9 +46,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private Vector2 GetRandomDirection()
+    private Vector2 GetRandomDirection(Vector2 currentPosition)
     {
-        float angleFromVertical_Degree = UnityEngine.Random.Range(50, 130);
+        float topLimitY = GetTopLimitY(currentPosition);
+        float bottomLimitY = GetBottomLimitY(currentPosition);
+
+        float angleFromVertical_Degree = UnityEngine.Random.Range(topLimitY, bottomLimitY);
         float angleFromVertical_Radian = angleFromVertical_Degree * Mathf.Deg2Rad;
         float x = Mathf.Sin(angleFromVertical_Radian);
         float y = Mathf.Cos(angleFromVertical_Radian);
@@ -58,6 +62,40 @@ public class EnemyController : MonoBehaviour
         }
 
         return new Vector2(x, y);
+    }
+
+    private float GetTopLimitY(Vector2 currentPosition)
+    {
+        if (currentPosition.y > 3)
+        {
+            return 0;
+        }
+        else if (currentPosition.y < 0)
+        {
+            return 50;
+        }
+        else
+        {
+            float topLimitY = 90 - 40 * (3 - currentPosition.y) / 3.0f;
+            return topLimitY;
+        }
+    }
+
+    private float GetBottomLimitY(Vector2 currentPosition)
+    {
+        if (currentPosition.y < -3)
+        {
+            return 0;
+        }
+        else if (currentPosition.y > 0)
+        {
+            return 130;
+        }
+        else
+        {
+            float bottomLimitY = 180 - 40 * (3 - currentPosition.y) / 3.0f;
+            return bottomLimitY;
+        }
     }
 
     private float GetRandomVelocity()
