@@ -15,9 +15,9 @@ public class InitializeAdsScript : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("Blessing"))
         {
-            if (args.Difficulty == Difficulty.Hard &&
+            if (args.Difficulty == Difficulty.Easy &&
                 args.Score == 3 &&
-                args.Player == "Глеб, ты супер!")
+                args.Player == "xxXg53e1HsrhgEUjcaPM")
             {
                 PlayerPrefs.SetInt("Blessing", 0);
                 PlayerPrefs.Save();
@@ -27,9 +27,12 @@ public class InitializeAdsScript : MonoBehaviour
 
     public void ShowAd()
     {
-        if (Advertisement.IsReady())
+        if (!PlayerPrefs.HasKey("Blessing"))
         {
-            Advertisement.Show();
+            if (Advertisement.IsReady())
+            {
+                Advertisement.Show();
+            }
         }
     }
 }

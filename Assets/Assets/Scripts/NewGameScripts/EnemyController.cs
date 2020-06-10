@@ -78,34 +78,46 @@ public class EnemyController : MonoBehaviour
 
     private float GetTopLimitY(Vector2 currentPosition)
     {
-        if (currentPosition.y > 3)
+        float x1 = 0;
+        float y1 = 50;
+
+        float x2 = 4;
+        float y2 = 90;
+
+        if (currentPosition.y > x2)
         {
-            return 0;
+            return y2;
         }
-        else if (currentPosition.y < 0)
+        else if (currentPosition.y < x1)
         {
-            return 50;
+            return y1;
         }
         else
         {
-            float topLimitY = 90 - 40 * (3 - currentPosition.y) / 3.0f;
+            float topLimitY = y1 + (y1 - y2) / (x1 - x2) * currentPosition.y;
             return topLimitY;
         }
     }
 
     private float GetBottomLimitY(Vector2 currentPosition)
     {
-        if (currentPosition.y < -3)
+        float x1 = 0;
+        float y1 = 130;
+
+        float x2 = -4;
+        float y2 = 90;
+
+        if (currentPosition.y < x2)
         {
-            return 0;
+            return y2;
         }
-        else if (currentPosition.y > 0)
+        else if (currentPosition.y > x1)
         {
-            return 130;
+            return y1;
         }
         else
         {
-            float bottomLimitY = 180 - 40 * (3 - currentPosition.y) / 3.0f;
+            float bottomLimitY = y1 + (y1 - y2) / (x1 - x2) * currentPosition.y;
             return bottomLimitY;
         }
     }
