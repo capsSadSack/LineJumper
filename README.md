@@ -20,6 +20,13 @@ LineJumper game
 - RecordItem,
 - AchievementUnlocked
 
+## Управление таблицей рекордов
+Доступ к таблице рекордов можно осуществить по ссылке:
+http://dreamlo.com/lb/LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg
+
+Private Code: LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg
+Public Code: 5ee2210c377dce0a149f2e75
+
 ## TODO (first priority):
 1) коррекция сложности
 	- настроить числовые параметры DifficultySettings для всех Difficulty;

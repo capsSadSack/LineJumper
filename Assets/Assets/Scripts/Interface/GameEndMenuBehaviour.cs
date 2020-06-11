@@ -20,10 +20,12 @@ public class GameEndMenuBehaviour : MonoBehaviour
     public Text enterNameText;
     public InputField nameTextBox;
 
+    public GameObject highScores;
+
     private bool isRecord;
     private RecordInfo recordInfo;
-    private PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
-    private PlayerPrefsDifficultyAccess difficultyAccess = new PlayerPrefsDifficultyAccess();
+    private readonly PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
+    private readonly PlayerPrefsDifficultyAccess difficultyAccess = new PlayerPrefsDifficultyAccess();
 
 
     public void ShowGameEndMenu()
@@ -50,13 +52,9 @@ public class GameEndMenuBehaviour : MonoBehaviour
         enterNameText.gameObject.SetActive(isRecord);
         nameTextBox.gameObject.SetActive(isRecord);
 
-
-
         GameEndArgs args = new GameEndArgs()
         {
-            Difficulty = difficultyAccess.GetDifficulty(),
-            Player = nameTextBox.text,
-            Score = scoreController.Score
+            Record = recordInfo
         };
 
         CheckGameResultForAchievements(args);
@@ -86,9 +84,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
     {
         GameEndArgs args = new GameEndArgs()
         {
-            Difficulty = difficultyAccess.GetDifficulty(),
-            Player = nameTextBox.text,
-            Score = scoreController.Score
+            Record = recordInfo
         };
 
         OnGameEnd.Invoke(args);
@@ -100,11 +96,12 @@ public class GameEndMenuBehaviour : MonoBehaviour
         recordInfo.PlayerName = name;
 
         recordsAccess.InsertRecord(recordInfo);
+        highScores.GetComponent<HighScores>().AddNewHighScore(recordInfo);
     }
 
     private void CheckGameResultForAchievements(GameEndArgs args)
     {
-        if (args.Score >= 250)
+        if (args.Record.Score >= 250)
         {
             AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
             {
@@ -114,7 +111,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
             OnAchievementUnlocked.Invoke(achArgs);
         }
 
-        if (args.Score >= 100)
+        if (args.Record.Score >= 100)
         {
             AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
             {
@@ -124,7 +121,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
             OnAchievementUnlocked.Invoke(achArgs);
         }
 
-        if (args.Score >= 50)
+        if (args.Record.Score >= 50)
         {
             AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
             {
@@ -134,7 +131,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
             OnAchievementUnlocked.Invoke(achArgs);
         }
 
-        if (args.Score >= 25)
+        if (args.Record.Score >= 25)
         {
             AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
             {
@@ -144,7 +141,7 @@ public class GameEndMenuBehaviour : MonoBehaviour
             OnAchievementUnlocked.Invoke(achArgs);
         }
 
-        if (args.Score >= 10)
+        if (args.Record.Score >= 10)
         {
             AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
             {

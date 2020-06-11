@@ -15,9 +15,9 @@ public class InitializeAdsScript : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("Blessing"))
         {
-            if (args.Difficulty == Difficulty.Easy &&
-                args.Score == 3 &&
-                args.Player == "xxXg53e1HsrhgEUjcaPM")
+            if (args.Record.Difficulty == Difficulty.Easy &&
+                args.Record.Score == 3 &&
+                args.Record.PlayerName == "xxXg53e1HsrhgEUjcaPM")
             {
                 PlayerPrefs.SetInt("Blessing", 0);
                 PlayerPrefs.Save();
