@@ -9,8 +9,8 @@ public class HighScores : MonoBehaviour
     private readonly Dictionary<Difficulty, Codes> siteCodes = new Dictionary<Difficulty, Codes>()
     {
         { Difficulty.Easy,   new Codes("5ee2210c377dce0a149f2e75", "LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg") },
-        { Difficulty.Medium, new Codes("", "") },
-        { Difficulty.Hard,   new Codes("", "") }
+        { Difficulty.Medium, new Codes("5ee23e02377dce0b6c0c65c3", "2BwxuH-vXkaLtS7TcRAl0wkVWB7f-X6kSeSApHSHWaNg") },
+        { Difficulty.Hard,   new Codes("5ee245a4377e860b6c42853b", "olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w") }
     };
 
     private RecordInfo[] highScores;

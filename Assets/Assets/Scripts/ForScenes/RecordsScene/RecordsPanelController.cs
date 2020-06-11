@@ -5,21 +5,12 @@ using UnityEngine.UI;
 
 public class RecordsPanelController : MonoBehaviour
 {
-    private PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
     private List<GameObject> recordItems = new List<GameObject>();
 
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        ShowRecords(Difficulty.Hard);
-    }
-
-    public void ShowRecords(Difficulty difficulty)
+    public void ShowRecords(IEnumerable<RecordInfo> records)
     {
         ClearRecordItems();
-
-        var records = recordsAccess.GetRecords(difficulty);
         CreateRecords(records);
     }
 
@@ -38,28 +29,31 @@ public class RecordsPanelController : MonoBehaviour
         Vector2 offset = new Vector2(0, 850);
         int dy = -150;
 
-        for (int place = 1; place <= 10; place++)
+        if (records != null && records.Count() > 0)
         {
-            GameObject recordItem;
+            for (int place = 1; place <= records.Count(); place++)
+            {
+                GameObject recordItem;
 
-            if (place <= records.Count())
-            {
-                recordItem = CreateRecordItem(place, records.ElementAt(place - 1));
-            }
-            else
-            {
-                RecordInfo empty = new RecordInfo()
+                if (place <= records.Count())
                 {
-                    PlayerName = "...",
-                    Score = 0
-                };
+                    recordItem = CreateRecordItem(place, records.ElementAt(place - 1));
+                }
+                else
+                {
+                    RecordInfo empty = new RecordInfo()
+                    {
+                        PlayerName = "...",
+                        Score = 0
+                    };
 
-                recordItem = CreateRecordItem(place, empty);
+                    recordItem = CreateRecordItem(place, empty);
+                }
+
+                recordItem.transform.localScale = new Vector3(1, 1, 1);
+                recordItem.transform.localPosition = offset + (place - 1) * new Vector2(0, dy);
+                recordItems.Add(recordItem);
             }
-
-            recordItem.transform.localScale = new Vector3(1, 1, 1);
-            recordItem.transform.localPosition = offset + (place - 1) * new Vector2(0, dy);
-            recordItems.Add(recordItem);
         }
     }
 

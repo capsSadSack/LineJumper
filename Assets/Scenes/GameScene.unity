@@ -955,49 +955,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &557349246
+--- !u!1 &557349246 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6922986780134013327, guid: 938beefc393fa3242aa183293f2809df,
+    type: 3}
+  m_PrefabInstance: {fileID: 6922986780688154865}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 557349248}
-  - component: {fileID: 557349247}
-  m_Layer: 0
-  m_Name: HighscoreController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &557349247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557349246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebd58c74513a824b8676a08723fdecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &557349248
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557349246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.085992366, y: -0.08074345, z: 110.83966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594189354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +3724,75 @@ PrefabInstance:
       objectReference: {fileID: 1721919705}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bac757f32cc866349b22a640287dda42, type: 3}
+--- !u!1001 &6922986780688154865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.085992366
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08074345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 110.83966
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013297, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922986780134013327, guid: 938beefc393fa3242aa183293f2809df,
+        type: 3}
+      propertyPath: m_Name
+      value: HighscoreController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 938beefc393fa3242aa183293f2809df, type: 3}
 --- !u!224 &7292772542824782650 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7854939108401361216, guid: ce245476fb397fd459a1302ef66553fc,

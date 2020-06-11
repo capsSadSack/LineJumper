@@ -3,8 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class RecordsSceneController : MonoBehaviour
 {
-    // TODO: [CG, 2020.06.08] Не реализованы world-рекорды
     public RecordsPanelController recordsPanelController;
+    public HighScores worldRecordsAccess;
+
+    private PlayerPrefsRecordsAccess recordsAccess = new PlayerPrefsRecordsAccess();
 
     private RecordsScale recordsScale = RecordsScale.Local;
     private Difficulty difficulty = Difficulty.Easy;
@@ -41,7 +43,17 @@ public class RecordsSceneController : MonoBehaviour
 
     public void UpdateRecords()
     {
-        recordsPanelController.ShowRecords(difficulty);
+        if (recordsScale == RecordsScale.Local)
+        {
+            var records = recordsAccess.GetRecords(difficulty);
+            recordsPanelController.ShowRecords(records);
+        }
+        else
+        {
+            var records = worldRecordsAccess.DownloadHighScores(difficulty);
+            recordsPanelController.ShowRecords(records);
+        }
+
     }
 
     private void Update()

@@ -21,11 +21,10 @@ LineJumper game
 - AchievementUnlocked
 
 ## Управление таблицей рекордов
-Доступ к таблице рекордов можно осуществить по ссылке:
+Доступ к таблицам рекордов можно осуществить по ссылкам:
 http://dreamlo.com/lb/LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg
-
-Private Code: LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg
-Public Code: 5ee2210c377dce0a149f2e75
+http://dreamlo.com/lb/2BwxuH-vXkaLtS7TcRAl0wkVWB7f-X6kSeSApHSHWaNg
+http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 
 ## TODO (first priority):
 1) коррекция сложности
