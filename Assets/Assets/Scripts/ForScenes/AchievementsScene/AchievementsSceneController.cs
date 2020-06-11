@@ -9,6 +9,15 @@ public class AchievementsSceneController : MonoBehaviour
 {
     public Sprite runawayIcon;
     public Sprite doubleKillIcon;
+    public Sprite stayStillIcon;
+    public Sprite workAndRestIcon;
+
+    public Sprite destroyInSingleGame10Icon;
+    public Sprite destroyInSingleGame25Icon;
+    public Sprite destroyInSingleGame50Icon;
+    public Sprite destroyInSingleGame100Icon;
+    public Sprite destroyInSingleGame250Icon;
+
 
     public GameObject achievementsPanel;
 
@@ -44,8 +53,8 @@ public class AchievementsSceneController : MonoBehaviour
 
     private void ShowAchievements(Dictionary<Achievement, bool> achievementsStates)
     {
-        Vector2 offset = new Vector2(0, -150);
-        float dy = 250;
+        Vector2 offset = new Vector2(0, -400);
+        float dy = -250;
         Vector2 shift = new Vector2(0, dy);
 
         for (int i = 0; i < achievementsStates.Count; i++)
@@ -119,6 +128,20 @@ public class AchievementsSceneController : MonoBehaviour
                 return runawayIcon;
             case Achievement.DoubleKill:
                 return doubleKillIcon;
+            case Achievement.StayStill:
+                return stayStillIcon;
+            case Achievement.WorkAndRest:
+                return workAndRestIcon;
+            case Achievement.SingleGameCollected_10:
+                return destroyInSingleGame10Icon;
+            case Achievement.SingleGameCollected_25:
+                return destroyInSingleGame25Icon;
+            case Achievement.SingleGameCollected_50:
+                return destroyInSingleGame50Icon;
+            case Achievement.SingleGameCollected_100:
+                return destroyInSingleGame100Icon;
+            case Achievement.SingleGameCollected_250:
+                return destroyInSingleGame250Icon;
             default:
                 throw new ArgumentException("AchievementMessageShower.GetSprite: " +
                     "нет спрайта для выбранного Achievement.");

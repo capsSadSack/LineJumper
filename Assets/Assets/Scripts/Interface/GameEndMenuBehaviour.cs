@@ -94,15 +94,54 @@ public class GameEndMenuBehaviour : MonoBehaviour
 
     private void CheckGameResultForAchievements(GameEndArgs args)
     {
-        // TODO: [CG, 2020.06.09] Закомментировал вызов достижения
-        //if (args.Score > 10)
-        //{
-        //    AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
-        //    {
-        //        Achievement = Achievement.Runaway
-        //    };
+        if (args.Score >= 250)
+        {
+            AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+            {
+                Achievement = Achievement.SingleGameCollected_250
+            };
 
-        //    OnAchievementUnlocked.Invoke(achArgs);
-        //}
+            OnAchievementUnlocked.Invoke(achArgs);
+        }
+
+        if (args.Score >= 100)
+        {
+            AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+            {
+                Achievement = Achievement.SingleGameCollected_100
+            };
+
+            OnAchievementUnlocked.Invoke(achArgs);
+        }
+
+        if (args.Score >= 50)
+        {
+            AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+            {
+                Achievement = Achievement.SingleGameCollected_50
+            };
+
+            OnAchievementUnlocked.Invoke(achArgs);
+        }
+
+        if (args.Score >= 25)
+        {
+            AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+            {
+                Achievement = Achievement.SingleGameCollected_25
+            };
+
+            OnAchievementUnlocked.Invoke(achArgs);
+        }
+
+        if (args.Score >= 10)
+        {
+            AchievementUnlockedArgs achArgs = new AchievementUnlockedArgs()
+            {
+                Achievement = Achievement.SingleGameCollected_10
+            };
+
+            OnAchievementUnlocked.Invoke(achArgs);
+        }
     }
 }

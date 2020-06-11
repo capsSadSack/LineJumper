@@ -2559,6 +2559,18 @@ MonoBehaviour:
   achievementsCanvas: {fileID: 726345777}
   runawayIcon: {fileID: 21300000, guid: 22936e8771c1c7f4ea2efed148032979, type: 3}
   doubleKillIcon: {fileID: 21300000, guid: b75b361c75fb75841be24ac041c16c45, type: 3}
+  stayStillIcon: {fileID: 21300000, guid: e8f1320961d88aa43bb35d2ff3788a43, type: 3}
+  workAndRestIcon: {fileID: 21300000, guid: 4d0708c3236ce6442bf5b4258620b04a, type: 3}
+  destroyInSingleGame10Icon: {fileID: 21300000, guid: 8dee34e4c62174640a1b8a534bb5957c,
+    type: 3}
+  destroyInSingleGame25Icon: {fileID: 21300000, guid: 7f019e1cc976f384eb684f509051dc73,
+    type: 3}
+  destroyInSingleGame50Icon: {fileID: 21300000, guid: b1904e550da07034995e672eb3dca720,
+    type: 3}
+  destroyInSingleGame100Icon: {fileID: 21300000, guid: f73314f53794767429cb239a2a31ed20,
+    type: 3}
+  destroyInSingleGame250Icon: {fileID: 21300000, guid: 30076b077dfce7341b5275cb4c9e471a,
+    type: 3}
 --- !u!114 &1812254480
 MonoBehaviour:
   m_ObjectHideFlags: 0
