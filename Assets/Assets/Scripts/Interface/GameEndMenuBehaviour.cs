@@ -49,6 +49,17 @@ public class GameEndMenuBehaviour : MonoBehaviour
 
         enterNameText.gameObject.SetActive(isRecord);
         nameTextBox.gameObject.SetActive(isRecord);
+
+
+
+        GameEndArgs args = new GameEndArgs()
+        {
+            Difficulty = difficultyAccess.GetDifficulty(),
+            Player = nameTextBox.text,
+            Score = scoreController.Score
+        };
+
+        CheckGameResultForAchievements(args);
     }
 
 
@@ -80,7 +91,6 @@ public class GameEndMenuBehaviour : MonoBehaviour
             Score = scoreController.Score
         };
 
-        CheckGameResultForAchievements(args);
         OnGameEnd.Invoke(args);
     }
 
