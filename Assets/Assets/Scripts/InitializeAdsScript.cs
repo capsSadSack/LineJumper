@@ -3,8 +3,10 @@ using UnityEngine.Advertisements;
 
 public class InitializeAdsScript : MonoBehaviour
 {
+    private int counter = 0;
+
     private string gameId = "3646122";
-    private bool testMode = true;
+    private bool testMode = false;
 
     private void Start()
     {
@@ -17,7 +19,7 @@ public class InitializeAdsScript : MonoBehaviour
         {
             if (args.Record.Difficulty == Difficulty.Easy &&
                 args.Record.Score == 3 &&
-                args.Record.PlayerName == "xxXg53e1HsrhgEUjcaPM")
+                args.Record.PlayerName == "xxXg53e1Hsrhg")
             {
                 PlayerPrefs.SetInt("Blessing", 0);
                 PlayerPrefs.Save();
@@ -27,12 +29,18 @@ public class InitializeAdsScript : MonoBehaviour
 
     public void ShowAd()
     {
-        if (!PlayerPrefs.HasKey("Blessing"))
+        counter++;
+        if (counter % 4 == 0)
         {
-            if (Advertisement.IsReady())
+            if (!PlayerPrefs.HasKey("Blessing"))
             {
-                Advertisement.Show();
+                if (Advertisement.IsReady())
+                {
+                    Advertisement.Show();
+                }
             }
+
+            counter = 0;
         }
     }
 }

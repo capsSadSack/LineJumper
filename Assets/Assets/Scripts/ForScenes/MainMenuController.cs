@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadHowToPlayScene()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene("HowToPlayScene");
     }
 
     public void LoadRecordsScene()

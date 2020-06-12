@@ -34,7 +34,7 @@ public class AchievementMessageShower : MonoBehaviour
         this.gameObject.SetActive(true);
 
         // TODO: [CG, 2020.05.31] Заглушка на показ достижений всегда
-        if (true)//!achievementsAccess.GetAchievementsStates()[args.Achievement])
+        if (!achievementsAccess.GetAchievementsStates()[args.Achievement])
         {
             GameObject message = CreateAchievement(args.Achievement, true);
 

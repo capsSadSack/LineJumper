@@ -80,6 +80,7 @@
     <Compile Include="Assets\Assets\Scripts\Events\GameEndEvent.cs" />
     <Compile Include="Assets\Assets\Scripts\ForScenes\AchievementsScene\AchievementsSceneController.cs" />
     <Compile Include="Assets\Assets\Scripts\ForScenes\DifficultiesSceneController.cs" />
+    <Compile Include="Assets\Assets\Scripts\ForScenes\HowToPlaySceneController.cs" />
     <Compile Include="Assets\Assets\Scripts\ForScenes\MainMenuController.cs" />
     <Compile Include="Assets\Assets\Scripts\ForScenes\RecordsScene\RecordsPanelController.cs" />
     <Compile Include="Assets\Assets\Scripts\ForScenes\RecordsScene\RecordsSceneController.cs" />
@@ -94,16 +95,13 @@
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\ResetableTimer.cs" />
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\ScoreController.cs" />
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\SimpleTimer.cs" />
+    <Compile Include="Assets\Assets\Scripts\NewGameScripts\UIElement.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\DataAccess\HighScores.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\DataAccess\IRecordsAccess.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\DataAccess\PlayerPrefsRecordsAccess.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\EnumsProcessor.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\RecordInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\Records\RecordInfoConverter.cs" />
-    <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
-    <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
-    <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
-    <None Include="Assets\dreamlo\README_FIRST.txt" />
     <Reference Include="UnityEngine">
       <HintPath>E:/ProgramFiles/Unity/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

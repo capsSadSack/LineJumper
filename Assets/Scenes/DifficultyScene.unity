@@ -334,7 +334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "5 enemies at start, \nnew enemies appear often, \nenemies move more"
+  m_Text: "5 enemies at start, \nnew enemies appear often, \nenemies jump more"
 --- !u!222 &300420577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -568,9 +568,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '3 enemies at start,
+  m_Text: '4 enemies at start,
 
-    enemies move more'
+    enemies jump more'
 --- !u!222 &522515610
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2019,7 +2019,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1 enemy at  start, \nnew enemies appear rarely"
+  m_Text: "3 enemies at  start, \nnew enemies appear rarely"
 --- !u!222 &1823324403
 CanvasRenderer:
   m_ObjectHideFlags: 0

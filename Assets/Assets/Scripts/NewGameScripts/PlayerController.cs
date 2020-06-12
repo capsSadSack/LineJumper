@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    public UIElement pauseButton;
+    public UIElement pauseMenu;
+    public UIElement gameEndMenu;
+
     public UnityEvent OnPlayerMove;
     public UnityEvent OnGoodEnemyCollision;
     public UnityEvent OnAggressiveEnemyCollision;
@@ -26,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         stayStillTimer.UpdateTimer();
 
-        if (!isJumping && Input.GetMouseButtonDown(0))
+        if (!IsMouseOverUI() && !isJumping && Input.GetMouseButtonDown(0))
         {
             Vector3 mouseScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
@@ -95,5 +100,18 @@ public class PlayerController : MonoBehaviour
         };
 
         OnAchievementUnlocked.Invoke(args);
+    }
+
+    private bool IsMouseOverUI()
+    {
+        return
+            IsActiveAndMouseOver(pauseButton) ||
+            IsActiveAndMouseOver(pauseMenu) ||
+            IsActiveAndMouseOver(gameEndMenu);
+    }
+
+    private bool IsActiveAndMouseOver(UIElement uiElement)
+    {
+        return uiElement.MouseOverUI && uiElement.gameObject.activeSelf;
     }
 }

@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 142582898}
   - component: {fileID: 142582897}
   - component: {fileID: 142582896}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 443565293}
   - component: {fileID: 443565295}
   - component: {fileID: 443565294}
+  - component: {fileID: 443565296}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -760,6 +761,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443565292}
   m_CullTransparentMesh: 0
+--- !u!114 &443565296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443565292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46d8b0583a7cd445af55318a801af55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &446762769
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +785,7 @@ GameObject:
   - component: {fileID: 446762773}
   - component: {fileID: 446762772}
   - component: {fileID: 446762771}
+  - component: {fileID: 446762774}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -889,6 +903,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446762769}
   m_CullTransparentMesh: 0
+--- !u!114 &446762774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446762769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46d8b0583a7cd445af55318a801af55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &539211112
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +998,7 @@ GameObject:
   - component: {fileID: 594189355}
   - component: {fileID: 594189357}
   - component: {fileID: 594189356}
+  - component: {fileID: 594189358}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1042,6 +1069,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594189354}
   m_CullTransparentMesh: 0
+--- !u!114 &594189358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594189354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46d8b0583a7cd445af55318a801af55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &640023812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &726345778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2703,7 +2742,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -67937045
+  m_SortingLayerID: -1888775625
   m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1861397958
@@ -3264,10 +3303,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747992266}
     m_Modifications:
+    - target: {fileID: 375581919506307549, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 375581921080090064, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090064, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
@@ -3379,6 +3428,21 @@ PrefabInstance:
       propertyPath: OnAggressiveEnemyCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 446762774}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 443565296}
+    - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
+        type: 3}
+      propertyPath: gameEndMenu
+      value: 
+      objectReference: {fileID: 594189358}
     - target: {fileID: 375581921080090068, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3607,10 +3671,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3396453803353133669, guid: bac757f32cc866349b22a640287dda42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3396453804197901000, guid: bac757f32cc866349b22a640287dda42,
         type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396453804197901000, guid: bac757f32cc866349b22a640287dda42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3396453804197901004, guid: bac757f32cc866349b22a640287dda42,
         type: 3}

@@ -45,15 +45,6 @@ public class EnemyController : MonoBehaviour
 
                 IsAggressive = GetAggression();
                 anim.SetBool("isAggressive", IsAggressive);
-
-                if (IsAggressive)
-                {
-                    Debug.Log("AGGRESSIVE");
-                }
-                else
-                {
-                    Debug.Log("NOT AGGRESSIVE");
-                }
             }
         }
     }
