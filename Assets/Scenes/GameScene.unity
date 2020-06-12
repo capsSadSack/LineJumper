@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 142582898}
   - component: {fileID: 142582897}
   - component: {fileID: 142582896}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -67937045
   m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!224 &142582899
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 434515775}
   - component: {fileID: 434515777}
   - component: {fileID: 434515776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeftBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ Transform:
   m_GameObject: {fileID: 434515774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -518.4, y: 0, z: 0}
-  m_LocalScale: {x: 192, y: 120, z: 1}
+  m_LocalScale: {x: 192, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 747992266}
   m_RootOrder: 0
@@ -1310,7 +1310,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1888775625
-  m_SortingOrder: 100
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &726345781
 RectTransform:
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 747992266}
   - component: {fileID: 747992268}
   - component: {fileID: 747992267}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 880458494}
   - component: {fileID: 880458496}
   - component: {fileID: 880458495}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeavingObjectsDestroyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2743,7 +2743,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1888775625
-  m_SortingOrder: 50
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!224 &1861397958
 RectTransform:
@@ -2835,7 +2835,7 @@ GameObject:
   - component: {fileID: 1888964967}
   - component: {fileID: 1888964969}
   - component: {fileID: 1888964968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RightBorder
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -2851,7 +2851,7 @@ Transform:
   m_GameObject: {fileID: 1888964966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 518.4, y: 0, z: 0}
-  m_LocalScale: {x: 192, y: 120, z: 1}
+  m_LocalScale: {x: 192, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 747992266}
   m_RootOrder: 1
@@ -3306,7 +3306,7 @@ PrefabInstance:
     - target: {fileID: 375581919506307549, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 375581921080090064, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
@@ -3316,7 +3316,7 @@ PrefabInstance:
     - target: {fileID: 375581921080090064, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
@@ -3674,7 +3674,7 @@ PrefabInstance:
     - target: {fileID: 3396453803353133669, guid: bac757f32cc866349b22a640287dda42,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3396453804197901000, guid: bac757f32cc866349b22a640287dda42,
         type: 3}
@@ -3684,7 +3684,7 @@ PrefabInstance:
     - target: {fileID: 3396453804197901000, guid: bac757f32cc866349b22a640287dda42,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3396453804197901004, guid: bac757f32cc866349b22a640287dda42,
         type: 3}
