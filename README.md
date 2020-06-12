@@ -23,16 +23,18 @@ LineJumper game
 ## Управление таблицей рекордов
 Доступ к таблицам рекордов можно осуществить по ссылкам:
 http://dreamlo.com/lb/LSJi_XdPkE2pPJV6Nvfruw3CYGcNbAU0mY1Z0BPEVOFg
+
 http://dreamlo.com/lb/2BwxuH-vXkaLtS7TcRAl0wkVWB7f-X6kSeSApHSHWaNg
+
 http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 
 ## TODO (first priority):
 1) коррекция сложности
 	- настроить числовые параметры DifficultySettings для всех Difficulty;
-	- добавить в настройки сложности скоростной интервал врагов?
 2) достижения
 	- придумать достижения
 		- собрать (уничтожить) 100/500/1000 врагов (потребуется вести подсчет и сохранять);
+		- "Я - скорость" - уничтожить 5 врагов за 10 секунд.
 	- иконки достижений
 3) Game Center (Google Play Games plugin for Unity)
 	- подключить аналог GameCenter для Android,
@@ -47,6 +49,8 @@ http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 
 ## Bugs:
 - Когда показывается достижение нельзя нажимать на кнопки в EndGameMenu
+- Когда на паузу жмёшь, шарик потом вылетает за пределы поля. (Шарик летит к кнопке меню).
+- Странное поведение кнопок на сцене с рекордами. Такое ощущение, что обновление происходит только при нажатии на кнопки "World" или "Local"
 
 ## UI Bugs:
 - MainMenuScene (и др., где используется MenuButton): 
