@@ -3,7 +3,7 @@ using UnityEngine.Advertisements;
 
 public class InitializeAdsScript : MonoBehaviour
 {
-    private int counter = 0;
+    private static int counter = 0;
 
     private string gameId = "3646122";
     private bool testMode = false;
@@ -30,7 +30,7 @@ public class InitializeAdsScript : MonoBehaviour
     public void ShowAd()
     {
         counter++;
-        if (counter % 4 == 0)
+        if (counter % 3 == 0)
         {
             if (!PlayerPrefs.HasKey("Blessing"))
             {
