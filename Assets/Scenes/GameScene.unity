@@ -1245,6 +1245,8 @@ GameObject:
   - component: {fileID: 726345780}
   - component: {fileID: 726345779}
   - component: {fileID: 726345778}
+  - component: {fileID: 726345783}
+  - component: {fileID: 726345782}
   m_Layer: 5
   m_Name: AchievementsCanvas
   m_TagString: Untagged
@@ -1332,6 +1334,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &726345782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726345777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a875a386c88604a9b82986ca9ea244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementsCanvas: {fileID: 726345777}
+  runawayIcon: {fileID: 21300000, guid: 22936e8771c1c7f4ea2efed148032979, type: 3}
+  doubleKillIcon: {fileID: 21300000, guid: b75b361c75fb75841be24ac041c16c45, type: 3}
+  stayStillIcon: {fileID: 21300000, guid: e8f1320961d88aa43bb35d2ff3788a43, type: 3}
+  workAndRestIcon: {fileID: 21300000, guid: 4d0708c3236ce6442bf5b4258620b04a, type: 3}
+  destroyInSingleGame10Icon: {fileID: 21300000, guid: 8dee34e4c62174640a1b8a534bb5957c,
+    type: 3}
+  destroyInSingleGame25Icon: {fileID: 21300000, guid: 7f019e1cc976f384eb684f509051dc73,
+    type: 3}
+  destroyInSingleGame50Icon: {fileID: 21300000, guid: b1904e550da07034995e672eb3dca720,
+    type: 3}
+  destroyInSingleGame100Icon: {fileID: 21300000, guid: f73314f53794767429cb239a2a31ed20,
+    type: 3}
+  destroyInSingleGame250Icon: {fileID: 21300000, guid: 30076b077dfce7341b5275cb4c9e471a,
+    type: 3}
+--- !u!114 &726345783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726345777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81886f0f4e06b544a243e880efe95ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &747992265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,7 +1528,7 @@ MonoBehaviour:
   OnRunawayAchievementUnlocked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1812254480}
+      - m_Target: {fileID: 726345783}
         m_MethodName: UnlockAchievement
         m_Mode: 0
         m_Arguments:
@@ -1498,7 +1539,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1812254479}
+      - m_Target: {fileID: 726345782}
         m_MethodName: ShowAchievementMessage
         m_Mode: 0
         m_Arguments:
@@ -2561,8 +2602,6 @@ GameObject:
   - component: {fileID: 1812254478}
   - component: {fileID: 1812254482}
   - component: {fileID: 1812254481}
-  - component: {fileID: 1812254480}
-  - component: {fileID: 1812254479}
   m_Layer: 5
   m_Name: AchievementPanel
   m_TagString: Untagged
@@ -2589,45 +2628,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1812254479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812254477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a875a386c88604a9b82986ca9ea244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  achievementsCanvas: {fileID: 726345777}
-  runawayIcon: {fileID: 21300000, guid: 22936e8771c1c7f4ea2efed148032979, type: 3}
-  doubleKillIcon: {fileID: 21300000, guid: b75b361c75fb75841be24ac041c16c45, type: 3}
-  stayStillIcon: {fileID: 21300000, guid: e8f1320961d88aa43bb35d2ff3788a43, type: 3}
-  workAndRestIcon: {fileID: 21300000, guid: 4d0708c3236ce6442bf5b4258620b04a, type: 3}
-  destroyInSingleGame10Icon: {fileID: 21300000, guid: 8dee34e4c62174640a1b8a534bb5957c,
-    type: 3}
-  destroyInSingleGame25Icon: {fileID: 21300000, guid: 7f019e1cc976f384eb684f509051dc73,
-    type: 3}
-  destroyInSingleGame50Icon: {fileID: 21300000, guid: b1904e550da07034995e672eb3dca720,
-    type: 3}
-  destroyInSingleGame100Icon: {fileID: 21300000, guid: f73314f53794767429cb239a2a31ed20,
-    type: 3}
-  destroyInSingleGame250Icon: {fileID: 21300000, guid: 30076b077dfce7341b5275cb4c9e471a,
-    type: 3}
---- !u!114 &1812254480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812254477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81886f0f4e06b544a243e880efe95ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1812254481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,8 +2794,8 @@ MonoBehaviour:
   OnAchievementUnlocked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1812254480}
-        m_MethodName: UnlockAchievement
+      - m_Target: {fileID: 726345782}
+        m_MethodName: ShowAchievementMessage
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2805,8 +2805,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1812254479}
-        m_MethodName: ShowAchievementMessage
+      - m_Target: {fileID: 726345783}
+        m_MethodName: UnlockAchievement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3377,12 +3377,12 @@ PrefabInstance:
         type: 3}
       propertyPath: OnAchievementUnlocked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1812254480}
+      objectReference: {fileID: 726345783}
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: OnAchievementUnlocked.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1812254479}
+      objectReference: {fileID: 726345782}
     - target: {fileID: 375581921080090067, guid: ca737fa5d5f63fb4b8349d8dc8cadf1d,
         type: 3}
       propertyPath: OnAchievementUnlocked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
