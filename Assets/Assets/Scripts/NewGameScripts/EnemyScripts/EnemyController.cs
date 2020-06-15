@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private float maxVelocity;
     private float minVelocity;
 
+    private IAggressionController aggressionController = new AggressionController();
 
     private void Start()
     {
@@ -120,8 +121,8 @@ public class EnemyController : MonoBehaviour
 
     private bool GetAggression()
     {
-        var value = UnityEngine.Random.value;
-        return value > 0.5f;
+        Aggression aggression = aggressionController.GetAggression();
+        return aggression == Aggression.Aggressive;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

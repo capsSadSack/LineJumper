@@ -30,7 +30,7 @@ public class InitializeAdsScript : MonoBehaviour
     public void ShowAd()
     {
         counter++;
-        if (counter % 3 == 0)
+        if (counter % 5 == 0)
         {
             if (!PlayerPrefs.HasKey("Blessing"))
             {

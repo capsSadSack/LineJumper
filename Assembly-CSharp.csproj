@@ -88,7 +88,10 @@
     <Compile Include="Assets\Assets\Scripts\Interface\GameEndMenuBehaviour.cs" />
     <Compile Include="Assets\Assets\Scripts\Interface\MenuButtonBehaviour.cs" />
     <Compile Include="Assets\Assets\Scripts\Interface\PauseMenuBehaviour.cs" />
-    <Compile Include="Assets\Assets\Scripts\NewGameScripts\EnemyController.cs" />
+    <Compile Include="Assets\Assets\Scripts\NewGameScripts\EnemyScripts\Aggression.cs" />
+    <Compile Include="Assets\Assets\Scripts\NewGameScripts\EnemyScripts\AggressionController.cs" />
+    <Compile Include="Assets\Assets\Scripts\NewGameScripts\EnemyScripts\EnemyController.cs" />
+    <Compile Include="Assets\Assets\Scripts\NewGameScripts\EnemyScripts\IAggressionController.cs" />
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\GameController.cs" />
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\LeavingObjectsDestroyer.cs" />
     <Compile Include="Assets\Assets\Scripts\NewGameScripts\PlayerController.cs" />

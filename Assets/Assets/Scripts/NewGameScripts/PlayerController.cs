@@ -38,11 +38,15 @@ public class PlayerController : MonoBehaviour
 
             Vector3 direction = (mouseWorldPosition - transform.position);
 
-            rb.velocity = 10 * new Vector2(direction.x, direction.y).normalized;
-            isJumping = true;
-            stayStillTimer.Stop();
+            // NOTE: Устранение бага, при котором возможно движение вдоль текущей линии
+            if (Mathf.Abs(direction.x) > 0.4f)
+            {
+                rb.velocity = 10 * new Vector2(direction.x, direction.y).normalized;
+                isJumping = true;
+                stayStillTimer.Stop();
 
-            OnPlayerMove.Invoke();
+                OnPlayerMove.Invoke();
+            }
         }
     }
 

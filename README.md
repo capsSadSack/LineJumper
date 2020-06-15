@@ -11,9 +11,9 @@ LineJumper game
 	- создать новое публичное поле типа Sprite, подцепить в Inspector созданную на шаге 3 иконку;
 	- в методе GetSprite в конструкции switch-case добавить новый case, в котором вернуть поле из п.4.
 5. Сгенерировать событие AchievementUnlockedEvent в момент открытия достижения с аргументом AchievementUnlockedArgs.
-6. Подписать на созданное событие следующие методы: 
-    - AchievementsDataSver.UnlockAchievement(args), 
-	- AchievementMessageShower.ShowAchievementMessage(args).
+6. Подписать на созданное событие следующие методы в указанном порядке: 
+    - AchievementMessageShower.ShowAchievementMessage(args)
+    - AchievementsDataSver.UnlockAchievement(args).
 
 ### Изменение Prefab'ов
 Изменение конструкций следующих prefab'ов может привести к нарушению работы приложения из-за наличия в их скриптах метода gameObject.transform.GetChild(n), где n - порядковый номер, забитый в коде:
@@ -29,18 +29,16 @@ http://dreamlo.com/lb/2BwxuH-vXkaLtS7TcRAl0wkVWB7f-X6kSeSApHSHWaNg
 http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 
 ## TODO (first priority):
-1) коррекция сложности
-	- настроить числовые параметры DifficultySettings для всех Difficulty;
-2) достижения
+1) достижения
 	- придумать достижения
 		- собрать (уничтожить) 100/500/1000 врагов (потребуется вести подсчет и сохранять);
 		- "Я - скорость" - уничтожить 5 врагов за 10 секунд.
 	- иконки достижений
-3) Game Center (Google Play Games plugin for Unity)
+2) Game Center (Google Play Games plugin for Unity)
 	- подключить аналог GameCenter для Android,
 	- подключить достижения.
-4) "Навести красоту"
-5) Звук
+3) "Навести красоту"
+4) Звук
 
 ## TODO (second priority):
 1) RecordsScene: 
@@ -48,7 +46,7 @@ http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 
 ## Bugs:
 - Когда показывается достижение нельзя нажимать на кнопки в EndGameMenu
-- Странное поведение кнопок на сцене с рекордами. Такое ощущение, что обновление происходит только при нажатии на кнопки "World" или "Local"
+- Кнопоки на сцене с рекордами надо нажимать дважды.
 
 ## UI Bugs:
 - MainMenuScene (и др., где используется MenuButton): 
