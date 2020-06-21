@@ -15,6 +15,12 @@ LineJumper game
     - AchievementMessageShower.ShowAchievementMessage(args)
     - AchievementsDataSver.UnlockAchievement(args).
 
+### Добавление нового типа PickUp-объекта
+Для добавления нового PickUp-объекта необходимо:
+1. Завести новый элемент enum PickUp;
+2. Добавить новый класс-декоратор, наследующий от APickUpSpawnerDecorator с переопределенным методом CreateSpawnObject;
+3. В классе PickUpSpawner дополнить метод InitializePickUpSpawners с использованием созданного в п.2 класса-декоратора.
+
 ### Изменение Prefab'ов
 Изменение конструкций следующих prefab'ов может привести к нарушению работы приложения из-за наличия в их скриптах метода gameObject.transform.GetChild(n), где n - порядковый номер, забитый в коде:
 - RecordItem,

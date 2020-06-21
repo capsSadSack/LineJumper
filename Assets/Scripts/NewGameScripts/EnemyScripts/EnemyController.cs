@@ -33,6 +33,14 @@ public class EnemyController : MonoBehaviour
         minVelocity = difficultySettings.MinVelocity;
     }
 
+    public void Explode()
+    {
+        anim.SetBool("isExploding", true);
+        
+
+
+    }
+
     public void Jump()
     {
         if (!isJumping)

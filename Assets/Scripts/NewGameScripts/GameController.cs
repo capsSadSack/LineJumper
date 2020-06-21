@@ -5,15 +5,17 @@ using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
     public UnityEvent OnGameAction;
-
     public GameObject enemiesTransformParent;
 
     private SimpleTimer spawningTimer;
     private SimpleTimer gameActionTimer;
+    private SimpleTimer pickUpTimer;
 
     private Difficulty currentDifficulty;
     private EnemySpawner enemySpawner;
     private PickUpsSpawner pickUpsSpawner;
+
+    private const float pickUpSpawnPeriod_Sec = 30.0f;
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class GameController : MonoBehaviour
 
         spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, enemySpawner.SpawnNewEnemy);
         gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
+        pickUpTimer = new SimpleTimer(pickUpSpawnPeriod_Sec, pickUpsSpawner.SpawnPickUp);
 
         enemySpawner.CreateInitialEnemies(difficultySettings.InitialEnemiesCount);
     }
@@ -35,7 +38,6 @@ public class GameController : MonoBehaviour
     {
         spawningTimer.UpdateTimer();
         gameActionTimer.UpdateTimer();
+        pickUpTimer.UpdateTimer();
     }
-
-
 }
