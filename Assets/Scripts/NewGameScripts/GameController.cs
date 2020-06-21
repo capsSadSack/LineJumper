@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour
     private SimpleTimer gameActionTimer;
 
     private Difficulty currentDifficulty;
-
+    private EnemySpawner enemySpawner;
+    private PickUpsSpawner pickUpsSpawner;
 
     private void Start()
     {
@@ -21,10 +22,13 @@ public class GameController : MonoBehaviour
 
         DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
 
-        spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, SpawnNewEnemy);
+        enemySpawner = new EnemySpawner(enemiesTransformParent, OnGameAction);
+        pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent);
+
+        spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, enemySpawner.SpawnNewEnemy);
         gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
-        
-        CreateEnemies(difficultySettings.InitialEnemiesCount);
+
+        enemySpawner.CreateInitialEnemies(difficultySettings.InitialEnemiesCount);
     }
 
     private void Update()
@@ -33,58 +37,5 @@ public class GameController : MonoBehaviour
         gameActionTimer.UpdateTimer();
     }
 
-    private void CreateEnemies(int enemiesNumber)
-    {
-        float dy = 150;
-        float x0 = 400;
-        float y0 = 0;
 
-        for (int i = 0; i < enemiesNumber; i++)
-        {
-            var enemy = CreateEnemy();
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            rb.gameObject.transform.localPosition = new Vector2(x0, y0 + Mathf.Pow(-1, i) * ((i + 1) / 2) * dy );
-            rb.velocity = new Vector2(1, 0);
-        }
-    }
-
-    private void SpawnNewEnemy()
-    {
-        var enemy = CreateEnemy();
-        GetPosAndVel(out Vector2 position, out Vector2 velocity);
-
-        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-        rb.gameObject.transform.localPosition = position;
-        rb.velocity = velocity;
-    }
-
-    private GameObject CreateEnemy()
-    {
-        var source = Resources.Load("Prefabs/Enemy");
-        GameObject objSource = (GameObject)Instantiate(source);
-        objSource.transform.parent = enemiesTransformParent.transform;
-
-        EnemyController enemyController = objSource.GetComponent<EnemyController>();
-        OnGameAction.AddListener(() => { enemyController.Jump(); });
-
-        return objSource;
-    }
-
-    private void GetPosAndVel(out Vector2 position, out Vector2 velocity)
-    {
-        float x0 = 0;
-        float y0 = 1000;
-        Vector2 vel = new Vector2(1 + UnityEngine.Random.value * 0.5f, -1 + UnityEngine.Random.value * 0.5f);
-
-        bool onTop = UnityEngine.Random.value > 0.5;
-
-        if (!onTop)
-        {
-            y0 *= -1;
-            vel *= -1;
-        }
-
-        position = new Vector2(x0, y0);
-        velocity = vel;
-    }
 }

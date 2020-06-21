@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{C87B4DD7-4E14-9217-55F1-8BAEF023E187}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -99,13 +98,35 @@
     <Compile Include="Assets\Scripts\NewGameScripts\ResetableTimer.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\SimpleTimer.cs" />
+    <Compile Include="Assets\Scripts\NewGameScripts\Spawners\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\NewGameScripts\Spawners\PickUpsSpawner.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\UIElement.cs" />
+    <Compile Include="Assets\Scripts\PickUps\NuclearBombBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PickUps\PickUp.cs" />
     <Compile Include="Assets\Scripts\Records\DataAccess\HighScores.cs" />
     <Compile Include="Assets\Scripts\Records\DataAccess\IRecordsAccess.cs" />
     <Compile Include="Assets\Scripts\Records\DataAccess\PlayerPrefsRecordsAccess.cs" />
     <Compile Include="Assets\Scripts\Records\EnumsProcessor.cs" />
     <Compile Include="Assets\Scripts\Records\RecordInfo.cs" />
     <Compile Include="Assets\Scripts\Records\RecordInfoConverter.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>E:/ProgramFiles/Unity/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -716,8 +737,7 @@
       <HintPath>E:/Programming/Complex/LineJumper/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

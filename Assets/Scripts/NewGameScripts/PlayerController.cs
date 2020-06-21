@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioSource collisionSound;
+
     public UIElement pauseButton;
     public UIElement pauseMenu;
     public UIElement gameEndMenu;
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        collisionSound.Play();
+
         if (collider.CompareTag("Enemy"))
         {
             var enemyController = collider.gameObject.GetComponent<EnemyController>();
@@ -86,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        collisionSound.Play();
+
         if (collision.gameObject.CompareTag("Border"))
         {
             enemiesDestroyedInSingleJump = 0;

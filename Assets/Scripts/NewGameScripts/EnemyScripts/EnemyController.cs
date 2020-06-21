@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public AudioSource enemyFlightAudio;
+    public AudioSource borderCollideAudio;
+
     public bool IsAggressive { get; private set; } = true;
 
     private bool isOnLeftBorder = false;
@@ -46,6 +49,11 @@ public class EnemyController : MonoBehaviour
 
                 IsAggressive = GetAggression();
                 anim.SetBool("isAggressive", IsAggressive);
+
+                if (IsAggressive)
+                {
+                    enemyFlightAudio.Play();
+                }
             }
         }
     }
@@ -129,6 +137,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collider.CompareTag("Border"))
         {
+            enemyFlightAudio.Stop();
+            borderCollideAudio.Play();
+
             isOnLeftBorder = collider.gameObject.transform.position.x < 0;
 
             rb.velocity = new Vector2(0, 0);
@@ -137,6 +148,14 @@ public class EnemyController : MonoBehaviour
             isJumping = false;
             IsAggressive = true;
             anim.SetBool("isAggressive", IsAggressive);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            enemyFlightAudio.Stop();
         }
     }
 }
