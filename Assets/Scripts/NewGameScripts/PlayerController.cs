@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
             if (enemyController.IsAggressive)
             {
+#if UNITY_EDITOR
+                Debug.Log("Collision with enemy");
+#endif
                 OnAggressiveEnemyCollision.Invoke();
             }
             else

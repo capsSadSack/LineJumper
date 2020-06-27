@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BottomSpawnDecorator : APickUpSpawnerDecorator
 {
-    public BottomSpawnDecorator(APickUpSpawner spawner, Transform parent)
-        : base(spawner, parent)
+    public BottomSpawnDecorator(APickUpSpawner spawner, Transform parent, Action onPickUp)
+        : base(spawner, parent, onPickUp)
     { }
 
     public override Vector2 GetSpawnPosition()

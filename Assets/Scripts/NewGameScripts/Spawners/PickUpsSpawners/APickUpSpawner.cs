@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class APickUpSpawner
 {
     private Transform parent;
+    protected Action onPickUp;
 
-    public APickUpSpawner(Transform parent)
+    public APickUpSpawner(Transform parent, Action onPickUp)
     {
         this.parent = parent;
+        this.onPickUp = onPickUp;
     }
 
     public virtual void Spawn()

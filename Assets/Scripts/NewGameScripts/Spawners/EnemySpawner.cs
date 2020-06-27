@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 // NOTE: Хоть класс и MonoBehaviour, его не надо прицеплять и GameObject.
@@ -6,17 +7,19 @@ public class EnemySpawner : MonoBehaviour
 {
     private GameObject enemiesTransformParent;
     private UnityEvent onGameAction;
+    private Action onEnemyDestroyed;
 
-    public EnemySpawner(GameObject enemiesTransformParent, UnityEvent onGameAction)
+    public EnemySpawner(GameObject enemiesTransformParent, UnityEvent onGameAction, Action onEnemyDestroyed)
     {
         this.enemiesTransformParent = enemiesTransformParent;
         this.onGameAction = onGameAction;
+        this.onEnemyDestroyed = onEnemyDestroyed;
     }
 
     public void CreateInitialEnemies(int enemiesNumber)
     {
         float dy = 150;
-        float x0 = 350;
+        float x0 = 450;
         float y0 = 0;
 
         for (int i = 0; i < enemiesNumber; i++)
@@ -47,6 +50,7 @@ public class EnemySpawner : MonoBehaviour
         objSource.transform.parent = enemiesTransformParent.transform;
 
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
+        enemyController.onEnemyDestoroyed = onEnemyDestroyed;
         onGameAction.AddListener(() => { enemyController.Jump(); });
 
         return objSource;

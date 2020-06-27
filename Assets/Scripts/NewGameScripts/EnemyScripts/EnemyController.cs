@@ -1,8 +1,13 @@
 ﻿using Assets.Assets.Scripts.Difficulties;
+using System;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
+    public Action onEnemyDestoroyed;
+
     public AudioSource enemyFlightAudio;
     public AudioSource borderCollideAudio;
 
@@ -36,9 +41,12 @@ public class EnemyController : MonoBehaviour
     public void Explode()
     {
         anim.SetBool("isExploding", true);
-        
+    }
 
-
+    public void DestroyEnemy()
+    {
+        onEnemyDestoroyed();
+        GameObject.Destroy(this.gameObject);
     }
 
     public void Jump()

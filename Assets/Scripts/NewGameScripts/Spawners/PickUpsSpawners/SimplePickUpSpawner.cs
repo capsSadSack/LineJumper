@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SimplePickUpSpawner : APickUpSpawner
 {
-    public SimplePickUpSpawner(Transform parent)
-        : base(parent)
+    public SimplePickUpSpawner(Transform parent, Action onPickUp)
+        : base(parent, onPickUp)
     { }
 
     public override GameObject CreateSpawnObject()

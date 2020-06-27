@@ -1,18 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class PickUpsSpawner
 {
+    public GameController gameController;
+
     private System.Random rand = new System.Random();
     private Transform parentForSpawners;
     private Dictionary<PickUp, APickUpSpawner> pickUpSpawners;
 
-    public PickUpsSpawner(GameObject transformParent)
+
+    public PickUpsSpawner(GameObject transformParent, GameController gameController)
     {
         this.parentForSpawners = transformParent.transform;
+        this.gameController = gameController;
 
-        InitializePickUpSpawners();
+        InitializePickUpSpawners(gameController.DestroyAllEnemies);
     }
 
     public void SpawnPickUp()
@@ -29,14 +34,14 @@ public class PickUpsSpawner
         return pickUps.ElementAt(index);
     }
 
-    private void InitializePickUpSpawners()
+    private void InitializePickUpSpawners(Action onNuclearBombPickedUp)
     {
         pickUpSpawners = new Dictionary<PickUp, APickUpSpawner>();
 
         // Nuclear Bomb
-        APickUpSpawner simpleNuclearBombSpawner = new SimplePickUpSpawner(parentForSpawners);
-        APickUpSpawner nuclearBombSpawner = new BombSpawnDecorator(simpleNuclearBombSpawner, parentForSpawners);
-        APickUpSpawner nuclearBombTopSpawner = new TopSpawnDecorator(nuclearBombSpawner, parentForSpawners);
+        APickUpSpawner simpleNuclearBombSpawner = new SimplePickUpSpawner(parentForSpawners, onNuclearBombPickedUp);
+        APickUpSpawner nuclearBombSpawner = new BombSpawnDecorator(simpleNuclearBombSpawner, parentForSpawners, onNuclearBombPickedUp);
+        APickUpSpawner nuclearBombTopSpawner = new TopSpawnDecorator(nuclearBombSpawner, parentForSpawners, onNuclearBombPickedUp);
 
         pickUpSpawners.Add(PickUp.NuclearBomb, nuclearBombTopSpawner);
 
