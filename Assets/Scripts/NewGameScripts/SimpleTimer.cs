@@ -3,7 +3,7 @@ using System;
 
 public class SimpleTimer
 {
-    private float remainsTime_Sec;
+    public float remainsTime_Sec;
     private float period_Sec;
     private Action timerEndAction;
 

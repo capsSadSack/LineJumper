@@ -2,6 +2,6 @@
 {
     NuclearBomb,
     Shield,
-    Seperpower,
-    TimeFreeze
+    //Seperpower,
+    //TimeFreeze
 }

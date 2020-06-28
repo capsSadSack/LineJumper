@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public AudioSource collisionSound;
+    public ShieldBehaviour shield;
 
     public UIElement pauseButton;
     public UIElement pauseMenu;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         stayStillTimer.UpdateTimer();
+
+        rb.transform.rotation = new Quaternion();
 
         if (!IsMouseOverUI() && !isJumping && Input.GetMouseButtonDown(0))
         {
@@ -62,31 +65,41 @@ public class PlayerController : MonoBehaviour
 
             if (enemyController.IsAggressive)
             {
-#if UNITY_EDITOR
-                Debug.Log("Collision with enemy");
-#endif
-                OnAggressiveEnemyCollision.Invoke();
-            }
-            else
-            {
-                if (isJumping)
+                if (shield.ShieldLayersNumber > 0)
                 {
-                    enemiesDestroyedInSingleJump++;
-                    if (enemiesDestroyedInSingleJump >= 2)
-                    {
-                        UnlockAchievement(Achievement.DoubleKill);
-                    }
+                    shield.IncrementShield(-1);
+                    CollectEnemy(collider.gameObject);
                 }
                 else
                 {
-                    UnlockAchievement(Achievement.WorkAndRest);
-                    enemiesDestroyedInSingleJump = 0;
+                    OnAggressiveEnemyCollision.Invoke();
                 }
-
-                GameObject.Destroy(collider.gameObject);
-                OnGoodEnemyCollision.Invoke();
+            }
+            else
+            {
+                CollectEnemy(collider.gameObject);
             }
         }
+    }
+
+    private void CollectEnemy(GameObject enemy)
+    {
+        if (isJumping)
+        {
+            enemiesDestroyedInSingleJump++;
+            if (enemiesDestroyedInSingleJump >= 2)
+            {
+                UnlockAchievement(Achievement.DoubleKill);
+            }
+        }
+        else
+        {
+            UnlockAchievement(Achievement.WorkAndRest);
+            enemiesDestroyedInSingleJump = 0;
+        }
+
+        GameObject.Destroy(enemy);
+        OnGoodEnemyCollision.Invoke();
     }
 
     

@@ -1,4 +1,5 @@
 ﻿using Assets.Assets.Scripts.Difficulties;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour
     public UnityEvent OnGameAction;
     public GameObject enemiesTransformParent;
     public ScoreController scoreController;
+    public PlayerController player;
 
     private SimpleTimer spawningTimer;
     private SimpleTimer gameActionTimer;
@@ -28,7 +30,7 @@ public class GameController : MonoBehaviour
         DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
 
         enemySpawner = new EnemySpawner(enemiesTransformParent, OnGameAction, scoreController.IncrementScore);
-        pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this);
+        pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this, player);
 
         spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, enemySpawner.SpawnNewEnemy);
         gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);

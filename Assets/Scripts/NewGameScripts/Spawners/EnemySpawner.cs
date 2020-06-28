@@ -2,8 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-// NOTE: Хоть класс и MonoBehaviour, его не надо прицеплять и GameObject.
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner
 {
     private GameObject enemiesTransformParent;
     private UnityEvent onGameAction;
@@ -46,8 +45,8 @@ public class EnemySpawner : MonoBehaviour
     private GameObject CreateEnemy()
     {
         var source = Resources.Load("Prefabs/Enemy");
-        GameObject objSource = (GameObject)Instantiate(source);
-        objSource.transform.parent = enemiesTransformParent.transform;
+        GameObject objSource = GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
+        //objSource.transform.parent = enemiesTransformParent.transform;
 
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
         enemyController.onEnemyDestoroyed = onEnemyDestroyed;

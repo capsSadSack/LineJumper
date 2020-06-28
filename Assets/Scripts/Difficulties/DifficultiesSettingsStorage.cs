@@ -36,8 +36,8 @@ public static class DifficultiesSettingsStorage
     public static Dictionary<Difficulty, DifficultySettings> Settings { get; private set; } =
     new Dictionary<Difficulty, DifficultySettings>()
     {
-                { Difficulty.Easy,   easySettings   },
-                { Difficulty.Medium, mediumSettings },
-                { Difficulty.Hard,   hardSettings   }
+        { Difficulty.Easy,   easySettings   },
+        { Difficulty.Medium, mediumSettings },
+        { Difficulty.Hard,   hardSettings   }
     };
 }

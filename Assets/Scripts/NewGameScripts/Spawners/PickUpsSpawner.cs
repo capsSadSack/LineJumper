@@ -6,23 +6,25 @@ using UnityEngine;
 public class PickUpsSpawner
 {
     public GameController gameController;
+    public PlayerController playerController;
 
     private System.Random rand = new System.Random();
     private Transform parentForSpawners;
     private Dictionary<PickUp, APickUpSpawner> pickUpSpawners;
 
 
-    public PickUpsSpawner(GameObject transformParent, GameController gameController)
+    public PickUpsSpawner(GameObject transformParent, GameController gameController, PlayerController playerController)
     {
         this.parentForSpawners = transformParent.transform;
         this.gameController = gameController;
+        this.playerController = playerController;
 
         InitializePickUpSpawners(gameController.DestroyAllEnemies);
     }
 
     public void SpawnPickUp()
     {
-        PickUp pickUpToSpawn = PickUp.NuclearBomb;//GetRandomPickUp();
+        PickUp pickUpToSpawn = GetRandomPickUp();
         APickUpSpawner spawner = pickUpSpawners[pickUpToSpawn];
         spawner.Spawn();
     }
@@ -30,7 +32,7 @@ public class PickUpsSpawner
     private PickUp GetRandomPickUp()
     {
         IEnumerable<PickUp> pickUps = EnumsProcessor.GetAllValues(PickUp.NuclearBomb);
-        int index = rand.Next(0, pickUps.Count() - 1);
+        int index = rand.Next(0, pickUps.Count());
         return pickUps.ElementAt(index);
     }
 
@@ -46,6 +48,12 @@ public class PickUpsSpawner
         pickUpSpawners.Add(PickUp.NuclearBomb, nuclearBombTopSpawner);
 
         // Shield
+        APickUpSpawner simpleShieldSpawner = new SimplePickUpSpawner(parentForSpawners, () => { });
+        APickUpSpawner shieldSpawner = new ShieldSpawnDecorator(simpleShieldSpawner, parentForSpawners, () => { }, playerController);
+        APickUpSpawner shieldTopOrBottomSpawner = new TopOrBottomSpawnDecorator(shieldSpawner, parentForSpawners, () => { });
 
+        pickUpSpawners.Add(PickUp.Shield, shieldTopOrBottomSpawner);
+
+        // Superpower
     }
 }
