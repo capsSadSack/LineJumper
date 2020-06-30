@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Assets.Scripts.NewGameScripts.Enemy;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemySpawner
 {
     private GameObject enemiesTransformParent;
+    private GameObject player;
     private UnityEvent onGameAction;
     private Action onEnemyDestroyed;
 
-    public EnemySpawner(GameObject enemiesTransformParent, UnityEvent onGameAction, Action onEnemyDestroyed)
+    public EnemySpawner(GameObject enemiesTransformParent, GameObject player, UnityEvent onGameAction, Action onEnemyDestroyed)
     {
         this.enemiesTransformParent = enemiesTransformParent;
+        this.player = player;
         this.onGameAction = onGameAction;
         this.onEnemyDestroyed = onEnemyDestroyed;
     }
@@ -47,12 +50,31 @@ public class EnemySpawner
         var source = Resources.Load("Prefabs/Enemy");
         GameObject objSource = GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
         //objSource.transform.parent = enemiesTransformParent.transform;
-
+        Enemy enemyType = GetEnemyType();
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
+        enemyController.SetEnemyType(enemyType);
+
+        if (enemyType == Enemy.Follower)
+        {
+            objSource.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
+
         enemyController.onEnemyDestoroyed = onEnemyDestroyed;
         onGameAction.AddListener(() => { enemyController.Jump(); });
 
         return objSource;
+    }
+
+    private Enemy GetEnemyType()
+    {
+        if (UnityEngine.Random.value > 0)
+        {
+            return Enemy.Follower;
+        }
+        else
+        {
+            return Enemy.Simple;
+        }
     }
 
     private void GetPosAndVel(out Vector2 position, out Vector2 velocity)

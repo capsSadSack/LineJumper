@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
         DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
 
-        enemySpawner = new EnemySpawner(enemiesTransformParent, OnGameAction, scoreController.IncrementScore);
+        enemySpawner = new EnemySpawner(enemiesTransformParent, player.gameObject, OnGameAction, scoreController.IncrementScore);
         pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this, player);
 
         spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, enemySpawner.SpawnNewEnemy);
