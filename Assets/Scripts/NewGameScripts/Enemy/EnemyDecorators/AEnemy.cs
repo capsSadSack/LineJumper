@@ -12,6 +12,8 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
         public abstract float GetVelocityMagnitude();
 
         public abstract bool GetAggression();
+
+        public abstract bool IsGoingToJump();
         //{
         //    Aggression aggression = aggressionController.GetAggression();
         //    return aggression == Aggression.Aggressive;

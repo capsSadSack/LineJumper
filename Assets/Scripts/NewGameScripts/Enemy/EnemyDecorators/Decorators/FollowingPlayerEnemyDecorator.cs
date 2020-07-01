@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators
 {
@@ -16,11 +17,10 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators
 
         public override Vector2 GetJumpDirection(Vector2 currentPosition)
         {
-            Vector2 verticalVector = new Vector2(0, 1);
-
-            if (Vector2.Angle(verticalVector, currentPosition) > 10)
+            var playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+            var angle = Math.Abs(Vector2.Angle(playerPos, currentPosition) % 180);
+            if (angle > 10 && angle < 80 || angle > 110 && angle < 170)
             {
-                var playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
                 var fromEnemyToPlayerVector = playerPos - currentPosition;
                 fromEnemyToPlayerVector.Normalize();
 

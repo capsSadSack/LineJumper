@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Interface\GameEndMenuBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interface\MenuButtonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interface\PauseMenuBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NewGameScripts\DecreasingPeriodTimer.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\AggressionChanging\Aggression.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\AggressionChanging\ChangingAggressionController.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\AggressionChanging\IAggressionController.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\AEnemy.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\AEnemyDecorator.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\Decorators\AlwaysAggressiveEnemyDecorator.cs" />
+    <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\Decorators\AlwaysJumpingEnemyDecorator.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\Decorators\FollowingPlayerEnemyDecorator.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyDecorators\SimpleEnemy.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\EnemyFabric.cs" />

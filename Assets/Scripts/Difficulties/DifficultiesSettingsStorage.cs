@@ -7,7 +7,8 @@ public static class DifficultiesSettingsStorage
         = new DifficultySettings()
         {
             InitialEnemiesCount = 3,
-            EnemiesSpawnPeriod_Sec = 6,
+            InitialEnemiesSpawnPeriod_Sec = 4.5f,
+            MinimumEnemiesSpawnPeriod_Sec = 3.0f,
             GameActionPeriod_Sec = 3.0f,
             MinVelocity = 1.5f,
             MaxVelocity = 3
@@ -17,20 +18,22 @@ public static class DifficultiesSettingsStorage
         = new DifficultySettings()
         {
             InitialEnemiesCount = 4,
-            EnemiesSpawnPeriod_Sec = 4.5f,
+            InitialEnemiesSpawnPeriod_Sec = 4.0f,
+            MinimumEnemiesSpawnPeriod_Sec = 3.0f,
             GameActionPeriod_Sec = 2.5f,
-            MinVelocity = 3,
-            MaxVelocity = 4
+            MinVelocity = 2.5f,
+            MaxVelocity = 3.75f
         };
 
     private readonly static DifficultySettings hardSettings
         = new DifficultySettings()
         {
             InitialEnemiesCount = 5,
-            EnemiesSpawnPeriod_Sec = 3,
-            GameActionPeriod_Sec = 2.0f,
+            InitialEnemiesSpawnPeriod_Sec = 3.5f,
+            MinimumEnemiesSpawnPeriod_Sec = 2.5f,
+            GameActionPeriod_Sec = 2.25f,
             MinVelocity = 3,
-            MaxVelocity = 5
+            MaxVelocity = 4.25f
         };
 
     public static Dictionary<Difficulty, DifficultySettings> Settings { get; private set; } =

@@ -1,4 +1,5 @@
 ﻿using Assets.Assets.Scripts.Difficulties;
+using Assets.Scripts.NewGameScripts;
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,7 +13,7 @@ public class GameController : MonoBehaviour
     public ScoreController scoreController;
     public PlayerController player;
 
-    private SimpleTimer spawningTimer;
+    private DecreasingPeriodTimer spawningTimer;
     private SimpleTimer gameActionTimer;
     private SimpleTimer pickUpTimer;
 
@@ -20,7 +21,7 @@ public class GameController : MonoBehaviour
     private EnemySpawner enemySpawner;
     private PickUpsSpawner pickUpsSpawner;
 
-    private const float pickUpSpawnPeriod_Sec = 20.0f;
+    private const float pickUpSpawnPeriod_Sec = 30.0f;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour
         enemySpawner = new EnemySpawner(enemiesTransformParent, player.gameObject, OnGameAction, scoreController.IncrementScore);
         pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this, player);
 
-        spawningTimer = new SimpleTimer(difficultySettings.EnemiesSpawnPeriod_Sec, enemySpawner.SpawnNewEnemy);
+        spawningTimer = new DecreasingPeriodTimer(difficultySettings.InitialEnemiesSpawnPeriod_Sec, difficultySettings.MinimumEnemiesSpawnPeriod_Sec, 0.1f, enemySpawner.SpawnNewEnemy);
         gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
         pickUpTimer = new SimpleTimer(pickUpSpawnPeriod_Sec, pickUpsSpawner.SpawnPickUp);
 

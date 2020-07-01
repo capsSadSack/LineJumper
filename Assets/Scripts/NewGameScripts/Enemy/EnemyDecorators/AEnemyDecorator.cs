@@ -25,5 +25,10 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
         {
             return baseEnemy.GetAggression();
         }
+
+        public override bool IsGoingToJump()
+        {
+            return baseEnemy.IsGoingToJump();
+        }
     }
 }

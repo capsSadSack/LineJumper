@@ -37,7 +37,14 @@ public class ShieldBehaviour : MonoBehaviour
 
     private void UpdateCountdownText()
     {
-        countdownText.text = $"{ (int)countdownTimer.remainsTime_Sec }";
+        if (countdownTimer.remainsTime_Sec > 0 && countdownTimer.remainsTime_Sec < 10)
+        {
+            countdownText.text = $"{ (int)countdownTimer.remainsTime_Sec }";
+        }
+        else
+        {
+            countdownText.text = "";
+        }
     }
 
     public void IncrementShield(int levels)

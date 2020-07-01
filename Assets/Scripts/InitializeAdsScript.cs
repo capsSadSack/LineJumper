@@ -6,7 +6,7 @@ public class InitializeAdsScript : MonoBehaviour
     private static int counter = 0;
 
     private string gameId = "3646122";
-    private bool testMode = true;
+    private bool testMode = false;
 
     private void Start()
     {

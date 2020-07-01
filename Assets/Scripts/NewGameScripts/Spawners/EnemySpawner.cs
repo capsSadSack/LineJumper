@@ -26,7 +26,7 @@ public class EnemySpawner
 
         for (int i = 0; i < enemiesNumber; i++)
         {
-            var enemy = CreateEnemy();
+            var enemy = CreateEnemy(Enemy.Simple);
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             rb.gameObject.transform.localPosition = new Vector2(x0, y0 + Mathf.Pow(-1, i) * ((i + 1) / 2) * dy);
             rb.velocity = new Vector2(1, 0);
@@ -45,19 +45,12 @@ public class EnemySpawner
         rb.angularVelocity = 360;
     }
 
-    private GameObject CreateEnemy()
+    private GameObject CreateEnemy(Enemy enemyType)
     {
-        var source = Resources.Load("Prefabs/Enemy");
-        GameObject objSource = GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
-        //objSource.transform.parent = enemiesTransformParent.transform;
-        Enemy enemyType = GetEnemyType();
+        GameObject objSource = GetEnemy(enemyType);
+
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
         enemyController.SetEnemyType(enemyType);
-
-        if (enemyType == Enemy.Follower)
-        {
-            objSource.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.magenta;
-        }
 
         enemyController.onEnemyDestoroyed = onEnemyDestroyed;
         onGameAction.AddListener(() => { enemyController.Jump(); });
@@ -65,9 +58,19 @@ public class EnemySpawner
         return objSource;
     }
 
+    private GameObject CreateEnemy()
+    {
+        Enemy enemyType = GetEnemyType();
+        return CreateEnemy(enemyType);
+    }
+
     private Enemy GetEnemyType()
     {
-        if (UnityEngine.Random.value > 0)
+        if (UnityEngine.Random.value > 0.9)
+        {
+            return Enemy.Immortal;
+        }
+        else if (UnityEngine.Random.value > 0.8)
         {
             return Enemy.Follower;
         }
@@ -75,6 +78,38 @@ public class EnemySpawner
         {
             return Enemy.Simple;
         }
+    }
+
+    private GameObject GetEnemy(Enemy enemyType)
+    {
+        UnityEngine.Object source;
+
+        switch (enemyType)
+        {
+            case Enemy.Simple:
+                {
+                    source = Resources.Load("Prefabs/Enemy");
+                    break;
+                }
+            case Enemy.Follower:
+                {
+                    source = Resources.Load("Prefabs/FollowingEnemy");
+                    break;
+                }
+            case Enemy.Immortal:
+                {
+                    // TODO: Заглушка
+                    source = Resources.Load("Prefabs/Enemy");
+                    break;
+                }
+            default:
+                {
+                    source = Resources.Load("Prefabs/Enemy");
+                    break;
+                }
+        }
+
+        return GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
     }
 
     private void GetPosAndVel(out Vector2 position, out Vector2 velocity)

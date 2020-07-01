@@ -102,5 +102,10 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
         {
             return UnityEngine.Random.Range(minVelocity, maxVelocity);
         }
+
+        public override bool IsGoingToJump()
+        {
+            return UnityEngine.Random.value > 0.66;
+        }
     }
 }

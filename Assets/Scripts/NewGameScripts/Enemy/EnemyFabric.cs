@@ -32,7 +32,8 @@ namespace Assets.Scripts.NewGameScripts.Enemy
                     {
                         AEnemy simpleEnemy = new SimpleEnemy();
                         AEnemy followingPlayerEnemy = new FollowingPlayerEnemyDecorator(simpleEnemy, player);
-                        AEnemy aggressiveFollowingEnemy = new AlwaysAggressiveEnemyDecorator(followingPlayerEnemy);
+                        AEnemy alwaysJumpingEnemy = new AlwaysJumpingEnemyDecorator(followingPlayerEnemy);
+                        AEnemy aggressiveFollowingEnemy = new AlwaysAggressiveEnemyDecorator(alwaysJumpingEnemy);
                         return aggressiveFollowingEnemy;
                     }
                 case Enemy.Immortal:

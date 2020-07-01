@@ -56,26 +56,23 @@ public class EnemyController : MonoBehaviour
 
     public void Jump()
     {
-        if (!isJumping)
+        if (!isJumping && enemy.IsGoingToJump())
         {
-            if (UnityEngine.Random.value > 0.66)
+            Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+
+            Vector2 direction = enemy.GetJumpDirection(coordinates);
+            float velocityModule = enemy.GetVelocityMagnitude();
+
+            rb.velocity = direction * velocityModule;
+            rb.angularVelocity = 360;
+            isJumping = true;
+
+            IsAggressive = enemy.GetAggression();
+            anim.SetBool("isAggressive", IsAggressive);
+
+            if (IsAggressive)
             {
-                Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-
-                Vector2 direction = enemy.GetJumpDirection(coordinates);
-                float velocityModule = enemy.GetVelocityMagnitude();
-
-                rb.velocity = direction * velocityModule;
-                rb.angularVelocity = 360;
-                isJumping = true;
-
-                IsAggressive = enemy.GetAggression();
-                anim.SetBool("isAggressive", IsAggressive);
-
-                if (IsAggressive)
-                {
-                    enemyFlightAudio.Play();
-                }
+                enemyFlightAudio.Play();
             }
         }
     }
