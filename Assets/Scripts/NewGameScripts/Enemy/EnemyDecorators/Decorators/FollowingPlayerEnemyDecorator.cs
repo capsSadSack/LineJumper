@@ -18,12 +18,13 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators
         public override Vector2 GetJumpDirection(Vector2 currentPosition)
         {
             var playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            var angle = Math.Abs(Vector2.Angle(playerPos, currentPosition) % 180);
-            if (angle > 10 && angle < 80 || angle > 110 && angle < 170)
-            {
-                var fromEnemyToPlayerVector = playerPos - currentPosition;
-                fromEnemyToPlayerVector.Normalize();
+            var fromEnemyToPlayerVector = playerPos - currentPosition;
+            fromEnemyToPlayerVector.Normalize();
 
+            var horizontalOrt = new Vector2(1, 0);
+            var angle = Math.Abs(Vector2.Angle(fromEnemyToPlayerVector, horizontalOrt) % 180);
+            if (angle > 10 && angle < 80)
+            {
                 return fromEnemyToPlayerVector;
             }
             else
