@@ -29,6 +29,7 @@ LineJumper game
 4. В классе EnemyFabric применить необходимые декораторы;
 5. В классе EnemySpawner дополнить метод GetEnemyType() с учетом вероятности появления созданного типа врага;
 6. В классе EnemySpawner дополнить метод GetEnemy(), указав путь к новому prefab-объекту.
+7. У Prefab'а должен быть компонент Animator с определенными параметрами типа bool isExploding, isAggressive.
 
 ### Изменение Prefab'ов
 Изменение конструкций следующих prefab'ов может привести к нарушению работы приложения из-за наличия в их скриптах метода gameObject.transform.GetChild(n), где n - порядковый номер, забитый в коде:
@@ -76,8 +77,14 @@ http://dreamlo.com/lb/olqSn4c-2ESYmMFrvJzOxw9uz_Pi6xlU2FuABbOBkt5w
 4) Game Center (Google Play Games plugin for Unity)
 	- подключить аналог GameCenter для Android,	
 	- подключить достижения.
+
+5) Дополнить раздел How To Play новой информацией:
+	- описание pick-up объектов,
+	- описание врагов,
+	- схема "кто кого сильнее".
 	
-5) "Навести красоту"
+6) "Навести красоту"
+
 
 ## TODO (second priority):
 1) RecordsScene: 

@@ -63,21 +63,29 @@ public class PlayerController : MonoBehaviour
         {
             var enemyController = collider.gameObject.GetComponent<EnemyController>();
 
-            if (enemyController.IsAggressive)
+            if (enemyController.EnemyType == Assets.Scripts.NewGameScripts.Enemy.Enemy.Immortal)
             {
-                if (shield.ShieldLayersNumber > 0)
-                {
-                    shield.IncrementShield(-1);
-                    CollectEnemy(collider.gameObject);
-                }
-                else
-                {
-                    OnAggressiveEnemyCollision.Invoke();
-                }
+                shield.IncrementShield(-shield.LayersNumber);
+                OnAggressiveEnemyCollision.Invoke();
             }
             else
             {
-                CollectEnemy(collider.gameObject);
+                if (enemyController.IsAggressive)
+                {
+                    if (shield.LayersNumber > 0)
+                    {
+                        shield.IncrementShield(-1);
+                        CollectEnemy(collider.gameObject);
+                    }
+                    else
+                    {
+                        OnAggressiveEnemyCollision.Invoke();
+                    }
+                }
+                else
+                {
+                    CollectEnemy(collider.gameObject);
+                }
             }
         }
     }

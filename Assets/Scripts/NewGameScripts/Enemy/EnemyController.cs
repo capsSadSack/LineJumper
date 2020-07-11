@@ -9,6 +9,7 @@ using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
+    public Enemy EnemyType => enemy.EnemyType;
     public Action onEnemyDestoroyed;
 
     public AudioSource enemyFlightAudio;
@@ -56,23 +57,26 @@ public class EnemyController : MonoBehaviour
 
     public void Jump()
     {
-        if (!isJumping && enemy.IsGoingToJump())
+        if (gameObject != null) // TODO: [CG, 2020.07.11] заглушка: не заходит дальше, если объект уничтожен. Однако, этот метод в таком случае вызываться вообще не должен.
         {
-            Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-
-            Vector2 direction = enemy.GetJumpDirection(coordinates);
-            float velocityModule = enemy.GetVelocityMagnitude();
-
-            rb.velocity = direction * velocityModule;
-            rb.angularVelocity = 360;
-            isJumping = true;
-
-            IsAggressive = enemy.GetAggression();
-            anim.SetBool("isAggressive", IsAggressive);
-
-            if (IsAggressive)
+            if (!isJumping && enemy.IsGoingToJump())
             {
-                enemyFlightAudio.Play();
+                Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+
+                Vector2 direction = enemy.GetJumpDirection(coordinates);
+                float velocityModule = enemy.GetVelocityMagnitude();
+
+                rb.velocity = direction * velocityModule;
+                rb.angularVelocity = 360;
+                isJumping = true;
+
+                IsAggressive = enemy.GetAggression();
+                anim.SetBool("isAggressive", IsAggressive);
+
+                if (IsAggressive)
+                {
+                    enemyFlightAudio.Play();
+                }
             }
         }
     }

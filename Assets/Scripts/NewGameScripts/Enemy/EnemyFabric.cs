@@ -1,10 +1,5 @@
 ﻿using Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators;
 using Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.NewGameScripts.Enemy
@@ -38,8 +33,12 @@ namespace Assets.Scripts.NewGameScripts.Enemy
                     }
                 case Enemy.Immortal:
                     {
-                        // TODO: [CG, 2020.06.30] Заглушка - не реализован "бессмертный" враг
-                        return new SimpleEnemy();
+                        AEnemy simpleEnemy = new SimpleEnemy();
+                        AEnemy alwaysJumpingEnemy = new AlwaysJumpingEnemyDecorator(simpleEnemy);
+                        AEnemy aggressiveEnemy = new AlwaysAggressiveEnemyDecorator(alwaysJumpingEnemy);
+                        AEnemy immortalEnemy = new ImmortalEnemyDecorator(aggressiveEnemy);
+
+                        return immortalEnemy;
                     }
                 default:
                     {

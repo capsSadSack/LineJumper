@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ShieldBehaviour : MonoBehaviour
 {
-    public int ShieldLayersNumber { get;  set; }
+    public int LayersNumber { get;  set; }
+
+    public AudioSource shieldBrokeSound;
 
     public SpriteRenderer shield_lvl_01;
     public SpriteRenderer shield_lvl_02;
@@ -28,7 +30,7 @@ public class ShieldBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (ShieldLayersNumber > 0)
+        if (LayersNumber > 0)
         {
             countdownTimer.UpdateTimer();
             UpdateCountdownText();
@@ -47,13 +49,21 @@ public class ShieldBehaviour : MonoBehaviour
 
     public void IncrementShield(int levels)
     {
-        ShieldLayersNumber += levels;
-        UpdateShieldLayersText();
-        UpdateShieldImages();
-
-        if (ShieldLayersNumber == 0)
+        if (levels != 0)
         {
-            ResetCountdownTimer();
+            LayersNumber += levels;
+            UpdateShieldLayersText();
+            UpdateShieldImages();
+
+            if (LayersNumber == 0)
+            {
+                ResetCountdownTimer();
+            }
+
+            if (levels < 0)
+            {
+                shieldBrokeSound.Play();
+            }
         }
     }
 
@@ -61,9 +71,9 @@ public class ShieldBehaviour : MonoBehaviour
     {
         string romanNumber = "";
 
-        if (ShieldLayersNumber > 0)
+        if (LayersNumber > 0)
         {
-            romanNumber = RomanNumerals.ToRoman((uint)ShieldLayersNumber);
+            romanNumber = RomanNumerals.ToRoman((uint)LayersNumber);
         }
 
         layersText.text = romanNumber;
@@ -71,8 +81,8 @@ public class ShieldBehaviour : MonoBehaviour
 
     private void UpdateShieldImages()
     {
-        shield_lvl_03.gameObject.SetActive(ShieldLayersNumber >= 3);
-        shield_lvl_02.gameObject.SetActive(ShieldLayersNumber >= 2);
-        shield_lvl_01.gameObject.SetActive(ShieldLayersNumber >= 1);
+        shield_lvl_03.gameObject.SetActive(LayersNumber >= 3);
+        shield_lvl_02.gameObject.SetActive(LayersNumber >= 2);
+        shield_lvl_01.gameObject.SetActive(LayersNumber >= 1);
     }
 }

@@ -11,8 +11,12 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
 {
     public class SimpleEnemy : AEnemy
     {
+        public override Enemy EnemyType => Enemy.Simple;
+
         private float maxVelocity;
         private float minVelocity;
+
+        private Aggression currentAggression = Aggression.Aggressive;
         private IAggressionController aggressionController = new ChangingAggressionController();
 
 
@@ -30,8 +34,8 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
 
         public override bool GetAggression()
         {
-            Aggression aggression = aggressionController.GetAggression();
-            return aggression == Aggression.Aggressive;
+            currentAggression = aggressionController.GetAggression();
+            return currentAggression == Aggression.Aggressive;
         }
 
         public override Vector2 GetJumpDirection(Vector2 currentPosition)

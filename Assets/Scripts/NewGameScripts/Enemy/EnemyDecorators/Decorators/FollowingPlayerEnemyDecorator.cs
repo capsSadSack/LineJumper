@@ -5,6 +5,8 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators
 {
     public class FollowingPlayerEnemyDecorator : AEnemyDecorator
     {
+        public override Enemy EnemyType => Enemy.Follower;
+
         private GameObject player;
 
 

@@ -4,6 +4,7 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators
 {
     public class AEnemyDecorator : AEnemy
     {
+        public override Enemy EnemyType => baseEnemy.EnemyType;
         protected AEnemy baseEnemy;
 
         public AEnemyDecorator(AEnemy enemy)

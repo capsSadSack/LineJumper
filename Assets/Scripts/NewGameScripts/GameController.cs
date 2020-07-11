@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private EnemySpawner enemySpawner;
     private PickUpsSpawner pickUpsSpawner;
 
-    private const float pickUpSpawnPeriod_Sec = 30.0f;
+    private const float pickUpSpawnPeriod_Sec = 3.0f;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
 
         DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
 
-        enemySpawner = new EnemySpawner(enemiesTransformParent, player.gameObject, OnGameAction, scoreController.IncrementScore);
+        enemySpawner = new EnemySpawner(enemiesTransformParent, OnGameAction, scoreController.IncrementScore);
         pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this, player);
 
         spawningTimer = new DecreasingPeriodTimer(difficultySettings.InitialEnemiesSpawnPeriod_Sec, difficultySettings.MinimumEnemiesSpawnPeriod_Sec, 0.1f, enemySpawner.SpawnNewEnemy);

@@ -75,7 +75,7 @@ public class InitializeAdsScript : MonoBehaviour
 
     IEnumerator ShowBannerWhenReady()
     {
-        while (!Advertisement.IsReady(placementId))
+        while (!Advertisement.IsReady(placementId) && !PlayerPrefs.HasKey("Blessing"))
         {
             yield return new WaitForSeconds(0.5f);
         }

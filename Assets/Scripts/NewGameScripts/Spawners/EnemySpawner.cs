@@ -6,17 +6,17 @@ using UnityEngine.Events;
 public class EnemySpawner
 {
     private GameObject enemiesTransformParent;
-    private GameObject player;
     private UnityEvent onGameAction;
     private Action onEnemyDestroyed;
 
-    public EnemySpawner(GameObject enemiesTransformParent, GameObject player, UnityEvent onGameAction, Action onEnemyDestroyed)
+
+    public EnemySpawner(GameObject enemiesTransformParent, UnityEvent onGameAction, Action onEnemyDestroyed)
     {
         this.enemiesTransformParent = enemiesTransformParent;
-        this.player = player;
         this.onGameAction = onGameAction;
         this.onEnemyDestroyed = onEnemyDestroyed;
     }
+
 
     public void CreateInitialEnemies(int enemiesNumber)
     {
@@ -53,7 +53,7 @@ public class EnemySpawner
         enemyController.SetEnemyType(enemyType);
 
         enemyController.onEnemyDestoroyed = onEnemyDestroyed;
-        onGameAction.AddListener(() => { enemyController.Jump(); });
+        onGameAction.AddListener(() => { enemyController.Jump(); }); // TODO: [CG, 2020.07.11] При уничтожении врага - отписываться!
 
         return objSource;
     }
@@ -66,7 +66,7 @@ public class EnemySpawner
 
     private Enemy GetEnemyType()
     {
-        if (UnityEngine.Random.value > 0.9)
+        if (UnityEngine.Random.value >= 0) // TODO: [CG, 2020.07.02] Заглушка, чтобы тестировать новый тип врага.
         {
             return Enemy.Immortal;
         }
@@ -89,27 +89,31 @@ public class EnemySpawner
             case Enemy.Simple:
                 {
                     source = Resources.Load("Prefabs/Enemy");
-                    break;
+                    return GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
                 }
             case Enemy.Follower:
                 {
                     source = Resources.Load("Prefabs/FollowingEnemy");
-                    break;
+                    return GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
                 }
             case Enemy.Immortal:
                 {
-                    // TODO: Заглушка
-                    source = Resources.Load("Prefabs/Enemy");
-                    break;
+                    source = Resources.Load("Prefabs/ImmortalEnemy");
+                    var enemy = GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
+
+                    var auraSource = Resources.Load("Prefabs/EnemyAura");
+                    var aura = GameObject.Instantiate(auraSource, enemiesTransformParent.transform, false) as GameObject;
+                    aura.transform.localScale = new Vector3(35, 35, 1);
+                    aura.GetComponent<EnemyAuraController>().objectToFollow = enemy;
+
+                    return enemy;
                 }
             default:
                 {
                     source = Resources.Load("Prefabs/Enemy");
-                    break;
+                    return GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
                 }
         }
-
-        return GameObject.Instantiate(source, enemiesTransformParent.transform, false) as GameObject;
     }
 
     private void GetPosAndVel(out Vector2 position, out Vector2 velocity)
