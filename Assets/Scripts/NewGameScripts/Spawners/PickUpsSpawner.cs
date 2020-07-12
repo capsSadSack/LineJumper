@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.Scripts.NewGameScripts;
+using Assets.Scripts.PickUps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,8 +21,29 @@ public class PickUpsSpawner
         this.gameController = gameController;
         this.playerController = playerController;
 
-        InitializePickUpSpawners(gameController.DestroyAllEnemies);
+        InitializePickUpSpawners(OnNukePickedUp);
     }
+
+    #region Переместить методы в др место!
+
+    private void OnNukePickedUp()
+    {
+        GameObject nuke = CreateNukeExplosion();
+       
+        nuke.GetComponent<AudioFinish>().OnFinishSound.AddListener(gameController.DestroyAllEnemies);
+    }
+
+    private GameObject CreateNukeExplosion()
+    {
+        var source = Resources.Load("Prefabs/NukeExplosion");
+        var obj = GameObject.Instantiate(source, parentForSpawners, false) as GameObject;
+        obj.transform.localScale = new Vector3(192, 192, 1);
+
+        return obj;
+    }
+
+    #endregion
+
 
     public void SpawnPickUp()
     {

@@ -1,11 +1,7 @@
-﻿using Assets.Assets.Scripts.Difficulties;
-using Assets.Scripts.NewGameScripts.Enemy;
-using Assets.Scripts.NewGameScripts.Enemy.AggressionChanging;
+﻿using Assets.Scripts.NewGameScripts.Enemy;
 using Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators;
 using System;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
@@ -57,26 +53,23 @@ public class EnemyController : MonoBehaviour
 
     public void Jump()
     {
-        if (gameObject != null) // TODO: [CG, 2020.07.11] заглушка: не заходит дальше, если объект уничтожен. Однако, этот метод в таком случае вызываться вообще не должен.
+        if (!isJumping && enemy.IsGoingToJump())
         {
-            if (!isJumping && enemy.IsGoingToJump())
+            Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+
+            Vector2 direction = enemy.GetJumpDirection(coordinates);
+            float velocityModule = enemy.GetVelocityMagnitude();
+
+            rb.velocity = direction * velocityModule;
+            rb.angularVelocity = 360;
+            isJumping = true;
+
+            IsAggressive = enemy.GetAggression();
+            anim.SetBool("isAggressive", IsAggressive);
+
+            if (IsAggressive)
             {
-                Vector2 coordinates = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-
-                Vector2 direction = enemy.GetJumpDirection(coordinates);
-                float velocityModule = enemy.GetVelocityMagnitude();
-
-                rb.velocity = direction * velocityModule;
-                rb.angularVelocity = 360;
-                isJumping = true;
-
-                IsAggressive = enemy.GetAggression();
-                anim.SetBool("isAggressive", IsAggressive);
-
-                if (IsAggressive)
-                {
-                    enemyFlightAudio.Play();
-                }
+                enemyFlightAudio.Play();
             }
         }
     }

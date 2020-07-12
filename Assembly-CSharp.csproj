@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Interface\GameEndMenuBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interface\MenuButtonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interface\PauseMenuBehaviour.cs" />
+    <Compile Include="Assets\Scripts\NewGameScripts\AudioFinish.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\DecreasingPeriodTimer.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\AggressionChanging\Aggression.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\Enemy\AggressionChanging\ChangingAggressionController.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Assets\Scripts\NewGameScripts\Spawners\PickUpsSpawners\SpawningObject\ShieldSpawnDecorator.cs" />
     <Compile Include="Assets\Scripts\NewGameScripts\UIElement.cs" />
     <Compile Include="Assets\Scripts\PickUps\NuclearBombBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PickUps\NukeExplosionBehaviour.cs" />
     <Compile Include="Assets\Scripts\PickUps\PickUp.cs" />
     <Compile Include="Assets\Scripts\PickUps\Shield\RomanNumerals.cs" />
     <Compile Include="Assets\Scripts\PickUps\Shield\ShieldBehaviour.cs" />
