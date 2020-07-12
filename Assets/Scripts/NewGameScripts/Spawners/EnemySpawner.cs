@@ -1,19 +1,20 @@
 ﻿using Assets.Scripts.NewGameScripts.Enemy;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemySpawner
 {
+    public List<GameObject> Enemies { get; set; } = new List<GameObject>();
+
     private GameObject enemiesTransformParent;
-    private UnityEvent onGameAction;
     private Action onEnemyDestroyed;
 
 
-    public EnemySpawner(GameObject enemiesTransformParent, UnityEvent onGameAction, Action onEnemyDestroyed)
+    public EnemySpawner(GameObject enemiesTransformParent, Action onEnemyDestroyed)
     {
         this.enemiesTransformParent = enemiesTransformParent;
-        this.onGameAction = onGameAction;
         this.onEnemyDestroyed = onEnemyDestroyed;
     }
 
@@ -27,22 +28,28 @@ public class EnemySpawner
         for (int i = 0; i < enemiesNumber; i++)
         {
             var enemy = CreateEnemy(Enemy.Simple);
+
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             rb.gameObject.transform.localPosition = new Vector2(x0, y0 + Mathf.Pow(-1, i) * ((i + 1) / 2) * dy);
             rb.velocity = new Vector2(1, 0);
             rb.angularVelocity = 360;
+
+            Enemies.Add(enemy);
         }
     }
 
     public void SpawnNewEnemy()
     {
         var enemy = CreateEnemy();
+
         GetPosAndVel(out Vector2 position, out Vector2 velocity);
 
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
         rb.gameObject.transform.localPosition = position;
         rb.velocity = velocity;
         rb.angularVelocity = 360;
+
+        Enemies.Add(enemy);
     }
 
     private GameObject CreateEnemy(Enemy enemyType)
@@ -51,9 +58,7 @@ public class EnemySpawner
 
         EnemyController enemyController = objSource.GetComponent<EnemyController>();
         enemyController.SetEnemyType(enemyType);
-
         enemyController.onEnemyDestoroyed = onEnemyDestroyed;
-        onGameAction.AddListener(() => { enemyController.Jump(); }); // TODO: [CG, 2020.07.11] При уничтожении врага - отписываться!
 
         return objSource;
     }

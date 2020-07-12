@@ -1,14 +1,9 @@
 ﻿using Assets.Assets.Scripts.Difficulties;
 using Assets.Scripts.NewGameScripts;
-using JetBrains.Annotations;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
-    public UnityEvent OnGameAction;
     public GameObject enemiesTransformParent;
     public ScoreController scoreController;
     public PlayerController player;
@@ -30,11 +25,11 @@ public class GameController : MonoBehaviour
 
         DifficultySettings difficultySettings = DifficultiesSettingsStorage.Settings[currentDifficulty];
 
-        enemySpawner = new EnemySpawner(enemiesTransformParent, OnGameAction, scoreController.IncrementScore);
+        enemySpawner = new EnemySpawner(enemiesTransformParent, scoreController.IncrementScore);
         pickUpsSpawner = new PickUpsSpawner(enemiesTransformParent, this, player);
 
         spawningTimer = new DecreasingPeriodTimer(difficultySettings.InitialEnemiesSpawnPeriod_Sec, difficultySettings.MinimumEnemiesSpawnPeriod_Sec, 0.1f, enemySpawner.SpawnNewEnemy);
-        gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, OnGameAction.Invoke);
+        gameActionTimer = new SimpleTimer(difficultySettings.GameActionPeriod_Sec, MoveEnemies);
         pickUpTimer = new SimpleTimer(pickUpSpawnPeriod_Sec, pickUpsSpawner.SpawnPickUp);
 
         enemySpawner.CreateInitialEnemies(difficultySettings.InitialEnemiesCount);
@@ -47,32 +42,26 @@ public class GameController : MonoBehaviour
         pickUpTimer.UpdateTimer();
     }
 
-    public void DestroyAllEnemies()
+    private void MoveEnemies()
     {
-        var enemies = GetAllEnemies();
-
-        foreach (var enemy in enemies)
+        foreach (var enemy in enemySpawner.Enemies)
         {
-            var ec = enemy.GetComponent<EnemyController>();
-            ec.Explode();
-        }
-    }
-
-    private IEnumerable<GameObject> GetAllEnemies()
-    {
-        List<GameObject> enemies = new List<GameObject>();
-
-        for (int i = 0; i < enemiesTransformParent.transform.childCount; i++)
-        {
-            var probablyEnemy = enemiesTransformParent.transform.GetChild(i).gameObject;
-
-            if (probablyEnemy.CompareTag("Enemy"))
+            if (enemy != null)
             {
-                enemies.Add(probablyEnemy);
+                enemy.GetComponent<EnemyController>().Jump();
             }
         }
-
-        return enemies;
     }
 
+    public void DestroyAllEnemies()
+    {
+        foreach (var enemy in enemySpawner.Enemies)
+        {
+            if (enemy != null)
+            {
+                var ec = enemy.GetComponent<EnemyController>();
+                ec.Explode();
+            }
+        }
+    }
 }

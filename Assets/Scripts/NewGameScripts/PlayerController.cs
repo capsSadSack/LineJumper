@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.NewGameScripts.Enemy;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             var enemyController = collider.gameObject.GetComponent<EnemyController>();
 
-            if (enemyController.EnemyType == Assets.Scripts.NewGameScripts.Enemy.Enemy.Immortal)
+            if (enemyController.EnemyType == Enemy.Immortal)
             {
                 shield.IncrementShield(-shield.LayersNumber);
                 OnAggressiveEnemyCollision.Invoke();

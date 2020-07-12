@@ -2,7 +2,7 @@
 {
     public class ImmortalEnemyDecorator : AEnemyDecorator
     {
-        public override Enemy EnemyType => Enemy.Follower;
+        public override Enemy EnemyType => Enemy.Immortal;
 
         public ImmortalEnemyDecorator(AEnemy enemy)
             : base(enemy) { }
