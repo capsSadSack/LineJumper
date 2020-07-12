@@ -23,9 +23,9 @@ namespace Assets.Scripts.NewGameScripts.Enemy.EnemyDecorators.Decorators
             var fromEnemyToPlayerVector = playerPos - currentPosition;
             fromEnemyToPlayerVector.Normalize();
 
-            var horizontalOrt = new Vector2(1, 0);
-            var angle = Math.Abs(Vector2.Angle(fromEnemyToPlayerVector, horizontalOrt) % 180);
-            if (angle > 10 && angle < 80)
+            var verticalOrt = new Vector2(1, 0);
+            var angle = Math.Abs(Vector2.Angle(fromEnemyToPlayerVector, verticalOrt) % 180);
+            if (angle > 10 && angle < 80 || angle > 100 && angle < 170)
             {
                 return fromEnemyToPlayerVector;
             }

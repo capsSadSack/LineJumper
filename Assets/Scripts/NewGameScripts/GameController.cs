@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private EnemySpawner enemySpawner;
     private PickUpsSpawner pickUpsSpawner;
 
-    private const float pickUpSpawnPeriod_Sec = 30.0f;
+    private const float pickUpSpawnPeriod_Sec = 60.0f;
 
     private void Start()
     {

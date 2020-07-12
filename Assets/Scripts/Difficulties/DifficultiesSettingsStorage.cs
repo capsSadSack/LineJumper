@@ -19,7 +19,7 @@ public static class DifficultiesSettingsStorage
         {
             InitialEnemiesCount = 4,
             InitialEnemiesSpawnPeriod_Sec = 4.0f,
-            MinimumEnemiesSpawnPeriod_Sec = 3.0f,
+            MinimumEnemiesSpawnPeriod_Sec = 2.5f,
             GameActionPeriod_Sec = 2.5f,
             MinVelocity = 2.5f,
             MaxVelocity = 3.75f
@@ -30,7 +30,7 @@ public static class DifficultiesSettingsStorage
         {
             InitialEnemiesCount = 5,
             InitialEnemiesSpawnPeriod_Sec = 3.5f,
-            MinimumEnemiesSpawnPeriod_Sec = 2.5f,
+            MinimumEnemiesSpawnPeriod_Sec = 2.25f,
             GameActionPeriod_Sec = 2.25f,
             MinVelocity = 3,
             MaxVelocity = 4.25f

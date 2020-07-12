@@ -71,11 +71,11 @@ public class EnemySpawner
 
     private Enemy GetEnemyType()
     {
-        if (UnityEngine.Random.value >= 0) // TODO: [CG, 2020.07.02] Заглушка, чтобы тестировать новый тип врага.
+        if (UnityEngine.Random.value < 0) //>= 0.95)
         {
             return Enemy.Immortal;
         }
-        else if (UnityEngine.Random.value > 0.8)
+        else if (UnityEngine.Random.value > 0)//> 0.8)
         {
             return Enemy.Follower;
         }
@@ -108,8 +108,9 @@ public class EnemySpawner
 
                     var auraSource = Resources.Load("Prefabs/EnemyAura");
                     var aura = GameObject.Instantiate(auraSource, enemiesTransformParent.transform, false) as GameObject;
-                    aura.transform.localScale = new Vector3(35, 35, 1);
+                    aura.transform.position = enemy.transform.position;
                     aura.GetComponent<EnemyAuraController>().objectToFollow = enemy;
+                    aura.transform.localScale = new Vector3(35, 35, 1);
 
                     return enemy;
                 }
